@@ -8,7 +8,7 @@ even further about it he can click into button which will open Safari's browser 
 ### Used Technologies:
 1. SwiftUI - to create view layer of the application
 2. SFSymbols - to borrow certain icons avaiable eg. in a navbar
-3. Combine - to create asynchronous call to the API
+3. Combine - to create asynchronous call to the API and store cached Images
 <br>
 
 ### Design Patterns:
