@@ -7,15 +7,27 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct ContentView: View {
+    @AppStorage("selectedTab") private var selectedTab = 0
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            TabView(selection: $selectedTab) {
+                HomeView()
+                    .tag(0)
+                    .tabItem {
+                        Image(systemName: "house")
+                            .font(.largeTitle)
+                    }
+                SearchView()
+                    .tag(1)
+                    .tabItem {
+                        Image(systemName: "magnifyingglass")
+                    }
+            }
         }
-        .padding()
     }
 }
 
