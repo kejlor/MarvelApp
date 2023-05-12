@@ -18,6 +18,8 @@
 		E96A093F2A0E6A86008902C3 /* UrlResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A093E2A0E6A86008902C3 /* UrlResponse.swift */; };
 		E96A09422A0E6B0B008902C3 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E96A09412A0E6B0B008902C3 /* Keys.plist */; };
 		E96A09442A0E6B46008902C3 /* APIKeyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A09432A0E6B46008902C3 /* APIKeyable.swift */; };
+		E96A09462A0E6B83008902C3 /* NetworkServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A09452A0E6B83008902C3 /* NetworkServiceFactory.swift */; };
+		E96A09482A0E6B98008902C3 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A09472A0E6B98008902C3 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		E96A09402A0E6ADB008902C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E96A09412A0E6B0B008902C3 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		E96A09432A0E6B46008902C3 /* APIKeyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyable.swift; sourceTree = "<group>"; };
+		E96A09452A0E6B83008902C3 /* NetworkServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceFactory.swift; sourceTree = "<group>"; };
+		E96A09472A0E6B98008902C3 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,7 @@
 		E96A092F2A0E6991008902C3 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E96A09472A0E6B98008902C3 /* NetworkService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 		E96A09302A0E699E008902C3 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
+				E96A09452A0E6B83008902C3 /* NetworkServiceFactory.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -225,10 +231,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E96A09482A0E6B98008902C3 /* NetworkService.swift in Sources */,
 				E96A09232A0E6957008902C3 /* ContentView.swift in Sources */,
 				E96A093F2A0E6A86008902C3 /* UrlResponse.swift in Sources */,
 				E96A09442A0E6B46008902C3 /* APIKeyable.swift in Sources */,
 				E96A09372A0E6A4F008902C3 /* Comic.swift in Sources */,
+				E96A09462A0E6B83008902C3 /* NetworkServiceFactory.swift in Sources */,
 				E96A093D2A0E6A79008902C3 /* Creator.swift in Sources */,
 				E96A09392A0E6A5F008902C3 /* DataResponse.swift in Sources */,
 				E96A093B2A0E6A6D008902C3 /* Thumbnail.swift in Sources */,
