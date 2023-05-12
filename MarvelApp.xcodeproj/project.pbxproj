@@ -29,6 +29,7 @@
 		E96A093A2A0E6A6D008902C3 /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		E96A093C2A0E6A79008902C3 /* Creator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Creator.swift; sourceTree = "<group>"; };
 		E96A093E2A0E6A86008902C3 /* UrlResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlResponse.swift; sourceTree = "<group>"; };
+		E96A09402A0E6ADB008902C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +62,7 @@
 		E96A091F2A0E6957008902C3 /* MarvelApp */ = {
 			isa = PBXGroup;
 			children = (
+				E96A09402A0E6ADB008902C3 /* Info.plist */,
 				E96A09352A0E69BD008902C3 /* Models */,
 				E96A09342A0E69B9008902C3 /* Views */,
 				E96A09332A0E69B1008902C3 /* ViewModels */,
@@ -354,6 +356,7 @@
 				DEVELOPMENT_TEAM = 4Q8A93T347;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MarvelApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -383,6 +386,7 @@
 				DEVELOPMENT_TEAM = 4Q8A93T347;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MarvelApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
