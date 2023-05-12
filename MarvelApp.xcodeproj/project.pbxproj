@@ -23,6 +23,8 @@
 		E96A094A2A0E6BB3008902C3 /* PhotosCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A09492A0E6BB3008902C3 /* PhotosCacheManager.swift */; };
 		E96A094C2A0E6BC4008902C3 /* PhotosFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A094B2A0E6BC4008902C3 /* PhotosFileManager.swift */; };
 		E96A094E2A0E6BDF008902C3 /* ImageLoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A094D2A0E6BDF008902C3 /* ImageLoadViewModel.swift */; };
+		E96A09502A0E6C09008902C3 /* ComicListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A094F2A0E6C09008902C3 /* ComicListViewModel.swift */; };
+		E96A09522A0E6C22008902C3 /* SearchComicListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A09512A0E6C22008902C3 /* SearchComicListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		E96A09492A0E6BB3008902C3 /* PhotosCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCacheManager.swift; sourceTree = "<group>"; };
 		E96A094B2A0E6BC4008902C3 /* PhotosFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosFileManager.swift; sourceTree = "<group>"; };
 		E96A094D2A0E6BDF008902C3 /* ImageLoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadViewModel.swift; sourceTree = "<group>"; };
+		E96A094F2A0E6C09008902C3 /* ComicListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListViewModel.swift; sourceTree = "<group>"; };
+		E96A09512A0E6C22008902C3 /* SearchComicListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchComicListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				E96A094D2A0E6BDF008902C3 /* ImageLoadViewModel.swift */,
+				E96A094F2A0E6C09008902C3 /* ComicListViewModel.swift */,
+				E96A09512A0E6C22008902C3 /* SearchComicListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -245,9 +251,11 @@
 				E96A094C2A0E6BC4008902C3 /* PhotosFileManager.swift in Sources */,
 				E96A094E2A0E6BDF008902C3 /* ImageLoadViewModel.swift in Sources */,
 				E96A093F2A0E6A86008902C3 /* UrlResponse.swift in Sources */,
+				E96A09522A0E6C22008902C3 /* SearchComicListViewModel.swift in Sources */,
 				E96A09442A0E6B46008902C3 /* APIKeyable.swift in Sources */,
 				E96A094A2A0E6BB3008902C3 /* PhotosCacheManager.swift in Sources */,
 				E96A09372A0E6A4F008902C3 /* Comic.swift in Sources */,
+				E96A09502A0E6C09008902C3 /* ComicListViewModel.swift in Sources */,
 				E96A09462A0E6B83008902C3 /* NetworkServiceFactory.swift in Sources */,
 				E96A093D2A0E6A79008902C3 /* Creator.swift in Sources */,
 				E96A09392A0E6A5F008902C3 /* DataResponse.swift in Sources */,
