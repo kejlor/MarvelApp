@@ -13,6 +13,8 @@ struct ComicSheetView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             VStack(alignment:. leading) {
+                Button(action: print("qwe"), label: Text("Im gonna make a conflict"))
+                
                 Text(comicVM.title)
                     .font(.title3)
                     .bold()
