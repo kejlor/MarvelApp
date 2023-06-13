@@ -19,7 +19,7 @@ struct SearchView: View {
                         .foregroundColor(.secondary)
                         .font(.system(size: 70))
                     
-                    Text(styledLocalizedString: "EmptySearchViewListText")
+                    Text("EmptySearchViewListText".localized)
                         .bold()
                         .padding(.vertical)
                 }
@@ -27,7 +27,7 @@ struct SearchView: View {
                 ComicListView(comics: vm.filteredComics)
             }
         }
-        .searchable(text: $text, prompt: Text(styledLocalizedString: "SearchablePropmpt"))
+        .searchable(text: $text, prompt: "SearchablePropmpt".localized)
         .onSubmit(of: .search) {
             vm.getComicsByTitle(for: text)
         }

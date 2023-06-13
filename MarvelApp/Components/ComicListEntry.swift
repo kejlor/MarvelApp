@@ -23,7 +23,7 @@ struct ComicListEntry: View {
                     .padding(.vertical, 2)
                     .lineLimit(nil)
                           
-                Text("\(Text(styledLocalizedString: "WrittenByText")) \(comicVM.creators)")
+                Text("WrittenByText".localized + " \(comicVM.creators)")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 
