@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  MarvelApp
+
+  Created by Bartosz Wojtkowiak on 13/06/2023.
+  
+*/
+
+// SearchView
+"EmptySearchViewListText" = "Start typing to find a particular comics.";
+"SearchablePropmpt" = "Search for a comic book";
+
+// ComicListViewModel
+"DetailText" = "detail";
+
+// ComicListEntry
+"WrittenByText" = "written by";
+
+// FindOutButton
+"FindOutButtonText" = "Find out more";
