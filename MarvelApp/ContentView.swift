@@ -10,6 +10,8 @@ import SwiftUI
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var comicsVM = ComicListViewModel(networkService: NetworkServiceFactory.create())
+    @StateObject private var searchVM = SearchComicListViewModel(networkService: NetworkServiceFactory.create())
     @AppStorage("selectedTab") private var selectedTab = 0
     
     var body: some View {
@@ -19,13 +21,15 @@ struct ContentView: View {
                     .tag(0)
                     .tabItem {
                         Image(systemName: "house")
-                            .font(.largeTitle)
                     }
+                    .environmentObject(comicsVM)
+                
                 SearchView()
                     .tag(1)
                     .tabItem {
                         Image(systemName: "magnifyingglass")
                     }
+                    .environmentObject(searchVM)
             }
         }
     }
