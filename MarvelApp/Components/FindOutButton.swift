@@ -16,7 +16,7 @@ struct FindOutButton: View {
                 UIApplication.shared.open(url)
             }
         } label: {
-            Text("Find out more")
+            Text("FindOutButtonText".localized)
                 .frame(maxWidth: .infinity)
                 .bold()
         }

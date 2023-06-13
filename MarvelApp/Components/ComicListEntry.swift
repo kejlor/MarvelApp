@@ -22,9 +22,8 @@ struct ComicListEntry: View {
                     .bold()
                     .padding(.vertical, 2)
                     .lineLimit(nil)
-                
-                Text("written by \(comicVM.creators)")
-                
+                          
+                Text("WrittenByText".localized + " \(comicVM.creators)")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 
