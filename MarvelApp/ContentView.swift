@@ -7,16 +7,13 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct ContentView: View {
     @StateObject private var comicsVM = ComicListViewModel(networkService: NetworkServiceFactory.create())
     @StateObject private var searchVM = SearchComicListViewModel(networkService: NetworkServiceFactory.create())
-    @AppStorage("selectedTab") private var selectedTab = 0
     
     var body: some View {
         VStack {
-            TabView(selection: $selectedTab) {
+            TabView {
                 HomeView()
                     .tag(0)
                     .tabItem {
