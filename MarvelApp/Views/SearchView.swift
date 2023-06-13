@@ -19,7 +19,7 @@ struct SearchView: View {
                         .foregroundColor(.secondary)
                         .font(.system(size: 70))
                     
-                    Text("Start typing to find a particular comics.")
+                    Text("EmptySearchViewListText".localized)
                         .bold()
                         .padding(.vertical)
                 }
@@ -27,7 +27,7 @@ struct SearchView: View {
                 ComicListView(comics: vm.filteredComics)
             }
         }
-        .searchable(text: $text, prompt: "Search for a comic book")
+        .searchable(text: $text, prompt: "SearchablePrompt".localized)
         .onSubmit(of: .search) {
             vm.getComicsByTitle(for: text)
         }
@@ -37,5 +37,6 @@ struct SearchView: View {
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView()
+            .environmentObject(SearchComicListViewModel(networkService: NetworkServiceFactory.create()))
     }
 }

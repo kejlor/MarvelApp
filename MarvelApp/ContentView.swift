@@ -7,25 +7,26 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct ContentView: View {
-    @AppStorage("selectedTab") private var selectedTab = 0
+    @StateObject private var comicsVM = ComicListViewModel(networkService: NetworkServiceFactory.create())
+    @StateObject private var searchVM = SearchComicListViewModel(networkService: NetworkServiceFactory.create())
     
     var body: some View {
         VStack {
-            TabView(selection: $selectedTab) {
+            TabView {
                 HomeView()
                     .tag(0)
                     .tabItem {
                         Image(systemName: "house")
-                            .font(.largeTitle)
                     }
+                    .environmentObject(comicsVM)
+                
                 SearchView()
                     .tag(1)
                     .tabItem {
                         Image(systemName: "magnifyingglass")
                     }
+                    .environmentObject(searchVM)
             }
         }
     }
