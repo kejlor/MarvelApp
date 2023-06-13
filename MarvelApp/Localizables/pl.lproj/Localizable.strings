@@ -8,7 +8,7 @@
 
 // SearchView
 "EmptySearchViewListText" = "Zacznij pisać aby znaleźć dany komiks.";
-"SearchablePropmpt" = "Szukaj wybranego komiksu";
+"SearchablePrompt" = "Szukaj wybranego komiksu";
 
 // ComicListViewModel
 "DetailText" = "szczegóły";

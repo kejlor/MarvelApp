@@ -8,7 +8,7 @@
 
 // SearchView
 "EmptySearchViewListText" = "Start typing to find a particular comics.";
-"SearchablePropmpt" = "Search for a comic book";
+"SearchablePrompt" = "Search for a comic book";
 
 // ComicListViewModel
 "DetailText" = "detail";

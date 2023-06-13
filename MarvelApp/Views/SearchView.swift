@@ -27,7 +27,7 @@ struct SearchView: View {
                 ComicListView(comics: vm.filteredComics)
             }
         }
-        .searchable(text: $text, prompt: "SearchablePropmpt".localized)
+        .searchable(text: $text, prompt: "SearchablePrompt".localized)
         .onSubmit(of: .search) {
             vm.getComicsByTitle(for: text)
         }
