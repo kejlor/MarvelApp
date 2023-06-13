@@ -6,12 +6,12 @@
 //
 
 import Foundation
-import Combine
 
 final class ComicListViewModel: ObservableObject {
     @Published var comics = [ComicViewModel]()
     
     private var networkService: any NetworkService
+    private var networkClient = NetworkClient()
     
     init(networkService: NetworkService) {
         self.networkService = networkService
