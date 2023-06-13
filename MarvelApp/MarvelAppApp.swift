@@ -9,14 +9,10 @@ import SwiftUI
 
 @main
 struct MarvelAppApp: App {
-    @StateObject private var comicsVM = ComicListViewModel(networkService: NetworkServiceFactory.create())
-    @StateObject private var searchVM = SearchComicListViewModel(networkService: NetworkServiceFactory.create())
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(comicsVM)
-                .environmentObject(searchVM)
         }
     }
 }
