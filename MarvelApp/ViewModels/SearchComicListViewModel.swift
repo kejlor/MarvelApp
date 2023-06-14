@@ -11,13 +11,18 @@ import Combine
 final class SearchComicListViewModel: ObservableObject {
     @Published var filteredComics = [ComicViewModel]()
     private var publisher: AnyPublisher<ComicsResponse, Error>?
-    var bag: AnyCancellable?
+    private var bag = Set<AnyCancellable>()
+    private var combineWebservice: CombineWebservice
+    
+    init() {
+        self.combineWebservice = CombineWebservice()
+    }
     
     func getComicsByTitle(for title: String) {
-        self.publisher = CombineWebservice().getComicsByTitle(for: title)
-        guard let pub = self.publisher else { return }
+        self.publisher = combineWebservice.getComicsByTitle(for: title)
+        guard let publisher else { return }
         
-        bag = pub.sink(receiveCompletion: { completion in
+        publisher.sink(receiveCompletion: { completion in
             switch completion {
             case .finished:
                 break
@@ -27,6 +32,7 @@ final class SearchComicListViewModel: ObservableObject {
         }, receiveValue: { (comics) in
             self.filteredComics = comics.data.results.compactMap(ComicViewModel.init)
         })
+        .store(in: &bag)
     }
 }
 
