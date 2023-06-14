@@ -8,94 +8,26 @@
 import Foundation
 
 final class NetworkService {
+    var session = URLSession.shared
+    private var baseURL = "https://gateway.marvel.com/v1/public/comics?ts=\(ENV.TIME_STAMP)&apikey=\(ENV.SERVICE_API_KEY)&hash=\(ENV.SERVICE_HASH)&limit=25&offset=0&orderBy=-onsaleDate"
     
     enum NetworkServiceError: Error {
         case invalidURL
         case missingData
     }
     
-    private func getComics(completion: @escaping (Result<ComicsResponse, Error>) -> Void) {
-        guard let url = URL(string: "https://gateway.marvel.com/v1/public/comics?ts=\(ENV.TIME_STAMP)&apikey=\(ENV.SERVICE_API_KEY)&hash=\(ENV.SERVICE_HASH)&limit=25&offset=0&orderBy=-onsaleDate") else {
-            completion(.failure(NetworkServiceError.invalidURL))
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let data = data else {
-                completion(.failure(NetworkServiceError.missingData))
-                return
-            }
-            
-            do {
-                let comicResponse = try JSONDecoder().decode(ComicsResponse.self, from: data)
-                completion(.success(comicResponse))
-            } catch {
-                completion(.failure(error))
-            }
-        }
-        .resume()
+    func loadComics() async throws -> ComicsResponse {
+        guard let url = URL(string: baseURL) else { throw NetworkServiceError.invalidURL }
+        let (data, _) = try await session.data(from: url)
+        let decoder = JSONDecoder()
+        return try decoder.decode(ComicsResponse.self, from: data)
     }
     
-    func fetchComicsWithContinuation() async throws -> ComicsResponse {
-        let comicsResponse: ComicsResponse = try await withCheckedThrowingContinuation({ continuation in
-            getComics { result in
-                switch result {
-                case .success(let comicsResponse):
-                    continuation.resume(returning: comicsResponse)
-                case .failure(let error):
-                    continuation.resume(throwing: error)
-                }
-            }
-        })
-        
-        return comicsResponse
-    }
-    
-    private func getComicsByTitle(for title: String, completion: @escaping (Result<ComicsResponse, Error>) -> Void) {
-        guard let url = URL(string: "https://gateway.marvel.com/v1/public/comics?ts=\(ENV.TIME_STAMP)&apikey=\(ENV.SERVICE_API_KEY)&hash=\(ENV.SERVICE_HASH)&limit=25&offset=0&orderBy=-onsaleDate&title=\(title)") else {
-            completion(.failure(NetworkServiceError.invalidURL))
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
-            
-            guard let data = data else {
-                completion(.failure(NetworkServiceError.missingData))
-                return
-            }
-            
-            do {
-                let comicResponse = try JSONDecoder().decode(ComicsResponse.self, from: data)
-                completion(.success(comicResponse))
-            } catch {
-                completion(.failure(error))
-            }
-        }
-        .resume()
-    }
-    
-    func fetchComicsByTitleWithContinuation(for title: String) async throws -> ComicsResponse {
-        let comicsResponse: ComicsResponse = try await withCheckedThrowingContinuation({ continuation in
-            getComicsByTitle(for: title) { result in
-                switch result {
-                case .success(let comicsResponse):
-                    continuation.resume(returning: comicsResponse)
-                case .failure(let error):
-                    continuation.resume(throwing: error)
-                }
-            }
-        })
-        
-        return comicsResponse
+    func loadComicsByTitle(for title: String) async throws -> ComicsResponse {
+        guard let titleURL = URL(string: baseURL + "&title=\(title)") else { throw NetworkServiceError.invalidURL }
+        let (data, _) = try await session.data(from: titleURL)
+        let decoder = JSONDecoder()
+        return try decoder.decode(ComicsResponse.self, from: data)
     }
 }
 
