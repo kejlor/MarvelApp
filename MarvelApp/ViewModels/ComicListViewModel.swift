@@ -19,10 +19,7 @@ final class ComicListViewModel: ObservableObject {
     }
     
     func getComics() {
-        self.publisher = combineWebservice.getComics()
-        guard let publisher else { return }
-        
-        publisher.sink(receiveCompletion: { completion in
+        combineWebservice.getComics().sink(receiveCompletion: { completion in
             switch completion {
             case .finished:
                 break

@@ -18,11 +18,8 @@ final class SearchComicListViewModel: ObservableObject {
         self.combineWebservice = CombineWebservice()
     }
     
-    func getComicsByTitle(for title: String) {
-        self.publisher = combineWebservice.getComicsByTitle(for: title)
-        guard let publisher else { return }
-        
-        publisher.sink(receiveCompletion: { completion in
+    func getComicsByTitle(for title: String) {        
+        combineWebservice.getComicsByTitle(for: title).sink(receiveCompletion: { completion in
             switch completion {
             case .finished:
                 break
