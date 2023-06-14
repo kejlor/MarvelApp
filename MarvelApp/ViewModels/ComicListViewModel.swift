@@ -12,14 +12,14 @@ final class ComicListViewModel: ObservableObject {
     @Published var comics = [ComicViewModel]()
     private var publisher: AnyPublisher<ComicsResponse, Error>?
     private var bag = Set<AnyCancellable>()
-    private var combineWebservice: CombineWebservice
+    private var networkService: NetworkService
     
     init() {
-        self.combineWebservice = CombineWebservice()
+        self.networkService = NetworkService()
     }
     
     func getComics() {
-        combineWebservice.getComics().sink(receiveCompletion: { completion in
+        networkService.getComics().sink(receiveCompletion: { completion in
             switch completion {
             case .finished:
                 break
