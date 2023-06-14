@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@MainActor
 final class SearchComicListViewModel: ObservableObject {
     @Published var filteredComics = [ComicViewModel]()
     private var publisher: AnyPublisher<ComicsResponse, Error>?
@@ -18,18 +19,12 @@ final class SearchComicListViewModel: ObservableObject {
         self.networkService = NetworkService()
     }
     
-    func getComicsByTitle(for title: String) {        
-        networkService.getComicsByTitle(for: title).sink(receiveCompletion: { completion in
-            switch completion {
-            case .finished:
-                break
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }, receiveValue: { (comics) in
-            self.filteredComics = comics.data.results.compactMap(ComicViewModel.init)
-        })
-        .store(in: &bag)
+    func getComicsByTitle(for title: String) async {
+        do {
+            self.filteredComics = try await networkService.fetchComicsByTitleWithContinuation(for: title).data.results.compactMap(ComicViewModel.init)
+        } catch {
+            print("Request failed with error: \(error)")
+        }
     }
 }
 

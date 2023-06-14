@@ -29,7 +29,9 @@ struct SearchView: View {
         }
         .searchable(text: $text, prompt: "SearchablePrompt".localized)
         .onSubmit(of: .search) {
-            vm.getComicsByTitle(for: text)
+            Task {
+                await vm.getComicsByTitle(for: text)
+            }
         }
     }
 }
