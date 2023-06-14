@@ -20,7 +20,6 @@
 		E96A093F2A0E6A86008902C3 /* UrlResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A093E2A0E6A86008902C3 /* UrlResponse.swift */; };
 		E96A09422A0E6B0B008902C3 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = E96A09412A0E6B0B008902C3 /* Keys.plist */; };
 		E96A09442A0E6B46008902C3 /* APIKeyable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A09432A0E6B46008902C3 /* APIKeyable.swift */; };
-		E96A09462A0E6B83008902C3 /* NetworkServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A09452A0E6B83008902C3 /* NetworkServiceFactory.swift */; };
 		E96A09482A0E6B98008902C3 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A09472A0E6B98008902C3 /* NetworkService.swift */; };
 		E96A094A2A0E6BB3008902C3 /* PhotosCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A09492A0E6BB3008902C3 /* PhotosCacheManager.swift */; };
 		E96A094C2A0E6BC4008902C3 /* PhotosFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A094B2A0E6BC4008902C3 /* PhotosFileManager.swift */; };
@@ -54,7 +53,6 @@
 		E96A09402A0E6ADB008902C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E96A09412A0E6B0B008902C3 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		E96A09432A0E6B46008902C3 /* APIKeyable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyable.swift; sourceTree = "<group>"; };
-		E96A09452A0E6B83008902C3 /* NetworkServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceFactory.swift; sourceTree = "<group>"; };
 		E96A09472A0E6B98008902C3 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		E96A09492A0E6BB3008902C3 /* PhotosCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCacheManager.swift; sourceTree = "<group>"; };
 		E96A094B2A0E6BC4008902C3 /* PhotosFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosFileManager.swift; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 				E96A09332A0E69B1008902C3 /* ViewModels */,
 				E96A09322A0E69AB008902C3 /* Components */,
 				E96A09312A0E69A5008902C3 /* Utils */,
-				E96A09302A0E699E008902C3 /* Factory */,
 				E96A092F2A0E6991008902C3 /* Service */,
 				E96A092E2A0E6982008902C3 /* Keys */,
 				E96A09202A0E6957008902C3 /* MarvelAppApp.swift */,
@@ -158,14 +155,6 @@
 				E96A09472A0E6B98008902C3 /* NetworkService.swift */,
 			);
 			path = Service;
-			sourceTree = "<group>";
-		};
-		E96A09302A0E699E008902C3 /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-				E96A09452A0E6B83008902C3 /* NetworkServiceFactory.swift */,
-			);
-			path = Factory;
 			sourceTree = "<group>";
 		};
 		E96A09312A0E69A5008902C3 /* Utils */ = {
@@ -311,7 +300,6 @@
 				E96A09622A0E6D15008902C3 /* SearchView.swift in Sources */,
 				5C7DFEE82A387C3F0022F564 /* String+Ext.swift in Sources */,
 				E96A09502A0E6C09008902C3 /* ComicListViewModel.swift in Sources */,
-				E96A09462A0E6B83008902C3 /* NetworkServiceFactory.swift in Sources */,
 				E96A095E2A0E6CC8008902C3 /* HomeView.swift in Sources */,
 				E96A093D2A0E6A79008902C3 /* Creator.swift in Sources */,
 				E96A09392A0E6A5F008902C3 /* DataResponse.swift in Sources */,

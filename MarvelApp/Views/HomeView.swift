@@ -28,6 +28,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .environmentObject(ComicListViewModel(networkService: NetworkServiceFactory.create()))
+            .environmentObject(ComicListViewModel())
     }
 }

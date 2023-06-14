@@ -10,26 +10,26 @@ import Combine
 
 final class ComicListViewModel: ObservableObject {
     @Published var comics = [ComicViewModel]()
+    private var publisher: AnyPublisher<ComicsResponse, Error>?
+    private var bag = Set<AnyCancellable>()
+    private var combineWebservice: CombineWebservice
     
-    private var networkService: any NetworkService
-    
-    init(networkService: NetworkService) {
-        self.networkService = networkService
+    init() {
+        self.combineWebservice = CombineWebservice()
     }
     
     func getComics() {
-        guard let url = URL(string: "https://gateway.marvel.com/v1/public/comics?ts=\(ENV.TIME_STAMP)&apikey=\(ENV.SERVICE_API_KEY)&hash=\(ENV.SERVICE_HASH)&limit=25&offset=0&orderBy=-onsaleDate") else { return }
-        
-        self.networkService.downloadData(of: ComicsResponse.self, from: url) { (result) in
-            switch result {
-            case .success(let comicsRepsonse):
-                DispatchQueue.main.async {
-                    self.comics = comicsRepsonse.data.results.map(ComicViewModel.init)
-                }
+        combineWebservice.getComics().sink(receiveCompletion: { completion in
+            switch completion {
+            case .finished:
+                break
             case .failure(let error):
                 print(error.localizedDescription)
             }
-        }
+        }, receiveValue: { (comics) in
+            self.comics = comics.data.results.compactMap(ComicViewModel.init)
+        })
+        .store(in: &bag)
     }
 }
 
