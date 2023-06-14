@@ -12,14 +12,14 @@ final class SearchComicListViewModel: ObservableObject {
     @Published var filteredComics = [ComicViewModel]()
     private var publisher: AnyPublisher<ComicsResponse, Error>?
     private var bag = Set<AnyCancellable>()
-    private var combineWebservice: CombineWebservice
+    private var networkService: NetworkService
     
     init() {
-        self.combineWebservice = CombineWebservice()
+        self.networkService = NetworkService()
     }
     
     func getComicsByTitle(for title: String) {        
-        combineWebservice.getComicsByTitle(for: title).sink(receiveCompletion: { completion in
+        networkService.getComicsByTitle(for: title).sink(receiveCompletion: { completion in
             switch completion {
             case .finished:
                 break
