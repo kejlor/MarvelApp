@@ -25,6 +25,7 @@ struct DetailComicBookView: View {
         .sheet(isPresented: $showingCredits) {
             ComicSheetView(comicVM: comicVM)
                 .padding()
+                .interactiveDismissDisabled(true)
                 .presentationDetents([.height(300), .medium])
         }
     }
