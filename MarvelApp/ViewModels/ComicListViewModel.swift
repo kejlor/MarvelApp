@@ -24,6 +24,14 @@ final class ComicListViewModel: ObservableObject {
             print("Request failed with error: \(error)")
         }
     }
+    
+    func getMoreComics() async {
+        do {
+            self.comics.append(contentsOf: try await comicsRepository.fetchMoreComics().data.results.compactMap(ComicViewModel.init))
+        } catch {
+            print("Request failed with error: \(error)")
+        }
+    }
 }
 
 struct ComicViewModel: Identifiable{
@@ -35,11 +43,11 @@ struct ComicViewModel: Identifiable{
     }
     
     var id: Int {
-        comic.id
+        comic.id ?? 0
     }
     
     var title: String {
-        comic.title
+        comic.title ?? ""
     }
     
     var description: String? {
@@ -47,13 +55,13 @@ struct ComicViewModel: Identifiable{
     }
     
     var thumbnailPath: String {
-        comic.thumbnail.path
+        comic.thumbnail?.path ?? ""
     }
     
     var creators: String {
         var names: [String] = []
         
-        for character in comic.creators.items {
+        for character in comic.creators?.items ?? [] {
             names.append(character.name)
         }
         
@@ -63,8 +71,8 @@ struct ComicViewModel: Identifiable{
     }
     
     var moreData: String {
-        if comic.urls[0].type == "detail" {
-            return comic.urls[0].url
+        if comic.urls?[0].type == "detail" {
+            return comic.urls?[0].url ?? ""
         } else {
             return ""
         }

@@ -12,10 +12,10 @@ struct ComicsResponse: Decodable {
 }
 
 struct Comic: Decodable {
-    let id: Int
-    let title: String
+    let id: Int?
+    let title: String?
     let description: String?
-    let thumbnail: Thumbnail
-    let creators: CreatorResponse
-    let urls: [UrlResponse]
+    let thumbnail: Thumbnail?
+    let creators: CreatorResponse?
+    let urls: [UrlResponse]?
 }
