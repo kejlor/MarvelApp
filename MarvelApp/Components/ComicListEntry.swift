@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ComicListEntry: View {
     var comicVM: ComicViewModel
