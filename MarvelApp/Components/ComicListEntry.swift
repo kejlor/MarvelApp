@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ComicListEntry: View {
     var comicVM: ComicViewModel
     
     var body: some View {
         HStack {
-            DownloadImageView(url: "\(comicVM.thumbnailPath).jpg", key: comicVM.title)
+            KFImage(URL(string: "\(comicVM.thumbnailPath).jpg"))
+                .resizable()
                 .cornerRadius(10.0)
                 .frame(width: 135, height: 225)
             
