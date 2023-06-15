@@ -13,7 +13,8 @@ struct ComicListEntry: View {
     
     var body: some View {
         HStack {
-            DownloadImageView(url: "\(comicVM.thumbnailPath).jpg", key: comicVM.title)
+            KFImage(URL(string: "\(comicVM.thumbnailPath).jpg"))
+                .resizable()
                 .cornerRadius(10.0)
                 .frame(width: 135, height: 225)
             
