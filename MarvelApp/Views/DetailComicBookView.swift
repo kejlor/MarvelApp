@@ -13,8 +13,13 @@ struct DetailComicBookView: View {
     
     var body: some View {
         VStack {
-            DownloadImageView(url: "\(comicVM.thumbnailPath).jpg", key: comicVM.title)
-                .scaledToFit()
+            AsyncImage(url: URL(string: "\(comicVM.thumbnailPath).jpg")) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+            } placeholder: {
+                ProgressView()
+            }
             
         }
         .sheet(isPresented: $showingCredits) {
