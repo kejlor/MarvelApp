@@ -11,16 +11,14 @@ struct HomeView: View {
     @EnvironmentObject var vm: ComicListViewModel
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                if vm.comics.isEmpty {
-                    ProgressView()
-                } else {
-                    ComicListView(comics: vm.comics)
-                }
+        VStack {
+            if vm.comics.isEmpty {
+                ProgressView()
+            } else {
+                ComicListView(comics: vm.comics)
             }
-            .navigationTitle("Marvel Comics")
         }
+        .navigationTitle("Marvel Comics")
         .task {
             await vm.getComics()
         }

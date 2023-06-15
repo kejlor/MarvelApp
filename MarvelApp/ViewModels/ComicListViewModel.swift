@@ -26,7 +26,7 @@ final class ComicListViewModel: ObservableObject {
     }
 }
 
-struct ComicViewModel: Identifiable {
+struct ComicViewModel: Identifiable{
     
     private var comic: Comic
     
@@ -88,3 +88,13 @@ struct CreatorViewModel: Identifiable {
     }
 }
 
+extension ComicViewModel: Hashable {
+    
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(id)
+    }
+    
+    static func == (lhs: ComicViewModel, rhs: ComicViewModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

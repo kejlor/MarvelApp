@@ -11,20 +11,16 @@ struct ComicListView: View {
     var comics: [ComicViewModel]
     
     var body: some View {
-        List(comics) { comic in
-            ZStack {
-                NavigationLink(destination: DetailComicBookView(comicVM: comic)) {
-                    EmptyView()
+        NavigationStack {
+            List(comics) { comic in
+                NavigationLink(value: comic) {
+                    ComicListEntry(comicVM: comic)
                 }
-                .frame(width: 0)
-                .opacity(0)
-                
-                ComicListEntry(comicVM: comic)
             }
-            .listRowSeparator(.hidden)
+            .navigationDestination(for: ComicViewModel.self) { comic in
+                DetailComicBookView(comicVM: comic)
+            }
         }
-        .listStyle(GroupedListStyle())
-        .padding(0)
     }
 }
 
