@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C1B49DD2A3B01A9007AAD00 /* ComicsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1B49DC2A3B01A9007AAD00 /* ComicsRepository.swift */; };
 		5C7DFEE22A3877D30022F564 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C7DFEE42A3877D30022F564 /* Localizable.strings */; };
 		5C7DFEE82A387C3F0022F564 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7DFEE72A387C3F0022F564 /* String+Ext.swift */; };
 		E96A09212A0E6957008902C3 /* MarvelAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A09202A0E6957008902C3 /* MarvelAppApp.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C1B49DC2A3B01A9007AAD00 /* ComicsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsRepository.swift; sourceTree = "<group>"; };
 		5C7DFEE32A3877D30022F564 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5C7DFEE52A3877D60022F564 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5C7DFEE72A387C3F0022F564 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -80,6 +82,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C1B49DB2A3B014C007AAD00 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				5C1B49DC2A3B01A9007AAD00 /* ComicsRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		5C7DFEDF2A3877B20022F564 /* Localizables */ = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +125,7 @@
 		E96A091F2A0E6957008902C3 /* MarvelApp */ = {
 			isa = PBXGroup;
 			children = (
+				5C1B49DB2A3B014C007AAD00 /* Repositories */,
 				5C7DFEE62A387C2C0022F564 /* Extensions */,
 				5C7DFEDF2A3877B20022F564 /* Localizables */,
 				E96A09402A0E6ADB008902C3 /* Info.plist */,
@@ -291,6 +302,7 @@
 				E96A095C2A0E6CAE008902C3 /* ComicListView.swift in Sources */,
 				E96A094C2A0E6BC4008902C3 /* PhotosFileManager.swift in Sources */,
 				E96A094E2A0E6BDF008902C3 /* ImageLoadViewModel.swift in Sources */,
+				5C1B49DD2A3B01A9007AAD00 /* ComicsRepository.swift in Sources */,
 				E96A09562A0E6C77008902C3 /* ComicListEntry.swift in Sources */,
 				E96A093F2A0E6A86008902C3 /* UrlResponse.swift in Sources */,
 				E96A09522A0E6C22008902C3 /* SearchComicListViewModel.swift in Sources */,
