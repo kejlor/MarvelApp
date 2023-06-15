@@ -11,15 +11,15 @@ import Combine
 @MainActor
 final class ComicListViewModel: ObservableObject {
     @Published var comics = [ComicViewModel]()
-    private var networkService: NetworkService
+    private var comicsRepository: ComicsRepository
     
     init() {
-        self.networkService = NetworkService()
+        self.comicsRepository = ComicsRepository()
     }
     
     func getComics() async {
         do {
-            self.comics = try await networkService.loadComics().data.results.compactMap(ComicViewModel.init)
+            try await self.comics = comicsRepository.fetchComics().data.results.compactMap(ComicViewModel.init)
         } catch {
             print("Request failed with error: \(error)")
         }
