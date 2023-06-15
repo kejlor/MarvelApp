@@ -21,7 +21,9 @@ struct HomeView: View {
             }
             .navigationTitle("Marvel Comics")
         }
-        .onAppear { vm.getComics() }
+        .task {
+            await vm.getComics()
+        }
     }
 }
 

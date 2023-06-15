@@ -6,26 +6,28 @@
 //
 
 import Foundation
-import Combine
 
 final class NetworkService {
-    func getComics() -> AnyPublisher<ComicsResponse, Error> {
-        guard let url = URL(string: "https://gateway.marvel.com/v1/public/comics?ts=\(ENV.TIME_STAMP)&apikey=\(ENV.SERVICE_API_KEY)&hash=\(ENV.SERVICE_HASH)&limit=25&offset=0&orderBy=-onsaleDate") else { fatalError("Wrong URL") }
-        
-        return URLSession.shared.dataTaskPublisher(for: url)
-            .map { $0.data }
-            .decode(type: ComicsResponse.self, decoder: JSONDecoder())
-            .receive(on: RunLoop.main)
-            .eraseToAnyPublisher()
+    var session = URLSession.shared
+    private var baseURL = "https://gateway.marvel.com/v1/public/comics?ts=\(ENV.TIME_STAMP)&apikey=\(ENV.SERVICE_API_KEY)&hash=\(ENV.SERVICE_HASH)&limit=25&offset=0&orderBy=-onsaleDate"
+    
+    enum NetworkServiceError: Error {
+        case invalidURL
+        case missingData
     }
     
-    func getComicsByTitle(for title: String) -> AnyPublisher<ComicsResponse, Error> {
-                guard let url = URL(string: "https://gateway.marvel.com/v1/public/comics?ts=\(ENV.TIME_STAMP)&apikey=\(ENV.SERVICE_API_KEY)&hash=\(ENV.SERVICE_HASH)&limit=25&offset=0&orderBy=-onsaleDate&title=\(title)") else { fatalError("Wrong URL adress") }
-        
-        return URLSession.shared.dataTaskPublisher(for: url)
-            .map { $0.data }
-            .decode(type: ComicsResponse.self, decoder: JSONDecoder())
-            .receive(on: RunLoop.main)
-            .eraseToAnyPublisher()
+    func loadComics() async throws -> ComicsResponse {
+        guard let url = URL(string: baseURL) else { throw NetworkServiceError.invalidURL }
+        let (data, _) = try await session.data(from: url)
+        let decoder = JSONDecoder()
+        return try decoder.decode(ComicsResponse.self, from: data)
+    }
+    
+    func loadComicsByTitle(for title: String) async throws -> ComicsResponse {
+        guard let titleURL = URL(string: baseURL + "&title=\(title)") else { throw NetworkServiceError.invalidURL }
+        let (data, _) = try await session.data(from: titleURL)
+        let decoder = JSONDecoder()
+        return try decoder.decode(ComicsResponse.self, from: data)
     }
 }
+

@@ -8,28 +8,21 @@
 import Foundation
 import Combine
 
+@MainActor
 final class ComicListViewModel: ObservableObject {
     @Published var comics = [ComicViewModel]()
-    private var publisher: AnyPublisher<ComicsResponse, Error>?
-    private var bag = Set<AnyCancellable>()
     private var networkService: NetworkService
     
     init() {
         self.networkService = NetworkService()
     }
     
-    func getComics() {
-        networkService.getComics().sink(receiveCompletion: { completion in
-            switch completion {
-            case .finished:
-                break
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }, receiveValue: { (comics) in
-            self.comics = comics.data.results.compactMap(ComicViewModel.init)
-        })
-        .store(in: &bag)
+    func getComics() async {
+        do {
+            self.comics = try await networkService.loadComics().data.results.compactMap(ComicViewModel.init)
+        } catch {
+            print("Request failed with error: \(error)")
+        }
     }
 }
 
