@@ -21,3 +21,6 @@
 
 // DismissSheetButton
 "DismissButtonText" = "Zamknij";
+
+// HomeView
+"HomeViewNavigationTitle" = "Komiksy Marvel'a";
