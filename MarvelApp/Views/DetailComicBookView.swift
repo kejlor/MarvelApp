@@ -18,7 +18,7 @@ struct DetailComicBookView: View {
                 image
                     .resizable()
                     .scaledToFit()
-                    .frame(height: UIScreen.main.bounds.size.height - DetailComicBookSheetHeights.spaceBetweenImageAndSheet.rawValue)
+                    .frame(height: UIScreen.main.bounds.size.height - DetailComicBookSheet.spaceBetweenImageAndSheet)
             } placeholder: {
                 ProgressView()
             }
@@ -27,7 +27,7 @@ struct DetailComicBookView: View {
         .sheet(isPresented: $showingCredits) {
             ComicSheetView(comicVM: comicVM)
                 .padding()
-                .presentationDetents([.height(DetailComicBookSheetHeights.minimalSheetHeight.rawValue), .medium])
+                .presentationDetents([.height(DetailComicBookSheet.minimalSheetHeight), .medium])
                 .onDisappear {
                     dismiss()
                 }
@@ -41,7 +41,7 @@ struct DetailComicBookView_Previews: PreviewProvider {
     }
 }
 
-private enum DetailComicBookSheetHeights: CGFloat {
-    case minimalSheetHeight = 275
-    case spaceBetweenImageAndSheet = 375
+enum DetailComicBookSheet {
+    static let minimalSheetHeight: CGFloat = 275
+    static let spaceBetweenImageAndSheet: CGFloat = 375
 }

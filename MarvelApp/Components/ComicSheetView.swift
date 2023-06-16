@@ -17,7 +17,7 @@ struct ComicSheetView: View {
                 Text(comicVM.title)
                     .font(.title3)
                     .bold()
-                    .padding(.vertical, ComicSheetViewParameters.titlePadding.rawValue)
+                    .padding(.vertical, ComicSheetViewParameters.titlePadding)
                 
                 Text(comicVM.creators)
                     .font(.caption)
@@ -25,14 +25,14 @@ struct ComicSheetView: View {
                 
                 ScrollView {
                     Text(comicVM.description)
-                        .padding(.vertical, ComicSheetViewParameters.descriptionPadding.rawValue)
+                        .padding(.vertical, ComicSheetViewParameters.descriptionPadding)
                         .font(.callout)
                         .lineLimit(nil)
                         .frame(maxWidth: .infinity)
                 }
                 
                 Spacer()
-                    .frame(height: ComicSheetViewParameters.spacerHeight.rawValue)
+                    .frame(height: ComicSheetViewParameters.spacerHeight)
             }
             
             FindOutButton(stringUrl: comicVM.moreData)
@@ -46,8 +46,8 @@ struct ComicSheetView_Previews: PreviewProvider {
     }
 }
 
-private enum ComicSheetViewParameters: CGFloat {
-    case titlePadding = 2
-    case descriptionPadding = 5
-    case spacerHeight = 150
+enum ComicSheetViewParameters {
+    static let titlePadding: CGFloat = 2
+    static let descriptionPadding: CGFloat = 5
+    static let spacerHeight: CGFloat = 150
 }

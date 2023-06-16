@@ -15,14 +15,14 @@ struct ComicListEntry: View {
         HStack {
             KFImage(URL(string: "\(comicVM.thumbnailPath).jpg"))
                 .resizable()
-                .cornerRadius(ComicListEntryParameters.cornerRadius.rawValue)
-                .frame(width: ComicListEntryParameters.imageWidth.rawValue, height: ComicListEntryParameters.imageHeight.rawValue)
+                .cornerRadius(ComicListEntryParameters.comicImageCornerRadius)
+                .frame(width: ComicListEntryParameters.comicImageWidth, height: ComicListEntryParameters.comicImageHeight)
             
             VStack(alignment:. leading) {
                 Text(comicVM.title)
                     .font(.title3)
                     .bold()
-                    .padding(.vertical, ComicListEntryParameters.comicTitlePadding.rawValue)
+                    .padding(.vertical, ComicListEntryParameters.comicTitlePadding)
                     .lineLimit(nil)
                           
                 Text("WrittenByText".localized + " \(comicVM.creators)")
@@ -31,13 +31,13 @@ struct ComicListEntry: View {
                 
                 ScrollView {
                     Text(comicVM.description)
-                        .padding(.vertical, ComicListEntryParameters.comicDescriptionPadding.rawValue)
+                        .padding(.vertical, ComicListEntryParameters.comicDescriptionPadding)
                         .font(.callout)
                         .lineLimit(nil)
                         .frame(maxWidth: .infinity)
                 }
             }
-            .frame(height: ComicListEntryParameters.comicListEntryHeight.rawValue)
+            .frame(height: ComicListEntryParameters.comicListEntryHeight)
             .frame(maxWidth: .infinity)
         }
     }
@@ -49,11 +49,11 @@ struct ComicListEntry_Previews: PreviewProvider {
     }
 }
 
-private enum ComicListEntryParameters: CGFloat {
-    case cornerRadius = 10
-    case imageWidth = 135
-    case imageHeight = 220
-    case comicTitlePadding = 2
-    case comicDescriptionPadding = 5
-    case comicListEntryHeight = 225
+enum ComicListEntryParameters {
+    static let comicImageCornerRadius: CGFloat = 10
+    static let comicImageWidth: CGFloat = 135
+    static let comicImageHeight: CGFloat = 220
+    static let comicTitlePadding: CGFloat = 2
+    static let comicDescriptionPadding: CGFloat = 5
+    static let comicListEntryHeight: CGFloat = 225
 }
