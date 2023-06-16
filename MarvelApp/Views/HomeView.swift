@@ -18,7 +18,6 @@ struct HomeView: View {
                 ComicListView(comics: vm.comics)
             }
         }
-        .navigationTitle("HomeViewNavigationTitle".localized)
         .task {
             await vm.getComics()
         }

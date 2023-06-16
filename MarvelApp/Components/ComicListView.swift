@@ -21,6 +21,7 @@ struct ComicListView: View {
                     await vm.getMoreComics()
                 } }
             }
+            .navigationTitle("HomeViewNavigationTitle".localized)
             .navigationDestination(for: ComicViewModel.self) { comic in
                 DetailComicBookView(comicVM: comic)
             }
