@@ -47,15 +47,15 @@ struct ComicViewModel: Identifiable{
     }
     
     var title: String {
-        comic.title ?? ""
+        comic.title ?? "Title not found"
     }
     
-    var description: String? {
-        comic.description ?? ""
+    var description: String {
+        comic.description ?? "Empty description"
     }
     
     var thumbnailPath: String {
-        comic.thumbnail?.path ?? ""
+        comic.thumbnail?.path ?? "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
     }
     
     var creators: String {
@@ -67,6 +67,10 @@ struct ComicViewModel: Identifiable{
         
         let joinedNames = names.joined(separator: ", ")
         
+        if joinedNames == "" {
+            return "Creators not found"
+        }
+        
         return joinedNames
     }
     
@@ -74,7 +78,7 @@ struct ComicViewModel: Identifiable{
         if comic.urls?[0].type == "detail" {
             return comic.urls?[0].url ?? ""
         } else {
-            return ""
+            return "More data not found"
         }
     }
 }
