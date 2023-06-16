@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailComicBookView: View {
     var comicVM: ComicViewModel
     @State private var showingCredits = true
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
@@ -20,13 +21,15 @@ struct DetailComicBookView: View {
             } placeholder: {
                 ProgressView()
             }
-            
         }
         .sheet(isPresented: $showingCredits) {
             ComicSheetView(comicVM: comicVM)
                 .padding()
                 .interactiveDismissDisabled(true)
-                .presentationDetents([.height(300), .medium])
+                .presentationDetents([.height(150), .medium])
+                .onDisappear {
+                    dismiss()
+                }
         }
     }
 }
