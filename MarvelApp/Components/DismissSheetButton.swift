@@ -10,11 +10,18 @@ import SwiftUI
 struct DismissSheetButton: View {
     @Environment(\.dismiss) var dismiss
     
-    
     var body: some View {
-        Button("Dismiss Me") {
+        Button {
             dismiss()
+        } label: {
+            Text("DismissButtonText".localized)
+                .frame(maxWidth: .infinity)
+                .bold()
         }
+        .tint(.secondary)
+        .buttonStyle(.borderedProminent)
+        .padding(.horizontal)
+        .controlSize(.large)
     }
 }
 

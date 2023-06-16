@@ -33,14 +33,17 @@ struct ComicSheetView: View {
                 }
                 
                 Spacer()
-                    .frame(height: 100)
+                    .frame(height: 150)
             }
-            DismissSheetButton()
-                .onSubmit {
-                    dismiss()
-                }
             
-            FindOutButton(stringUrl: comicVM.moreData)
+            VStack {
+                DismissSheetButton()
+                    .onSubmit {
+                        dismiss()
+                    }
+                
+                FindOutButton(stringUrl: comicVM.moreData)
+            }
         }
     }
 }

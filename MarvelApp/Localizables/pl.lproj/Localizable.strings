@@ -18,3 +18,6 @@
 
 // FindOutButton
 "FindOutButtonText" = "Dowiedz się więcej";
+
+// DismissSheetButton
+"DismissButtonText" = "Zamknij";

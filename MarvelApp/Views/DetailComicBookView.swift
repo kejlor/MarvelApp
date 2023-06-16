@@ -26,7 +26,7 @@ struct DetailComicBookView: View {
             ComicSheetView(comicVM: comicVM)
                 .padding()
                 .interactiveDismissDisabled(true)
-                .presentationDetents([.height(150), .medium])
+                .presentationDetents([.height(275), .medium])
                 .onDisappear {
                     dismiss()
                 }
