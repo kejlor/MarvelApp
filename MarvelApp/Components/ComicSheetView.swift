@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ComicSheetView: View {
     var comicVM: ComicViewModel
-    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -36,14 +35,7 @@ struct ComicSheetView: View {
                     .frame(height: 150)
             }
             
-            VStack {
-                DismissSheetButton()
-                    .onSubmit {
-                        dismiss()
-                    }
-                
-                FindOutButton(stringUrl: comicVM.moreData)
-            }
+            FindOutButton(stringUrl: comicVM.moreData)
         }
     }
 }

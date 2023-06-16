@@ -13,7 +13,7 @@ public final class ComicsRepository {
     private var offsetLimit = 0
     
     var urlString: String {
-        return "\(baseURL)&limit=5&offset=\(offsetLimit)&orderBy=-onsaleDate"
+        return "\(baseURL)&limit=25&offset=\(offsetLimit)&orderBy=-onsaleDate"
     }
     
     init() {

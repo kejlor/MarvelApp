@@ -13,19 +13,20 @@ struct DetailComicBookView: View {
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        VStack {
-            AsyncImage(url: URL(string: "\(comicVM.thumbnailPath).jpg")) { image in
-                image
-                    .resizable()
-                    .scaledToFit()
-            } placeholder: {
-                ProgressView()
-            }
+        VStack() {
+                AsyncImage(url: URL(string: "\(comicVM.thumbnailPath).jpg")) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: UIScreen.main.bounds.size.height - 375)
+                } placeholder: {
+                    ProgressView()
+                }
+        Spacer()
         }
         .sheet(isPresented: $showingCredits) {
             ComicSheetView(comicVM: comicVM)
                 .padding()
-                .interactiveDismissDisabled(true)
                 .presentationDetents([.height(275), .medium])
                 .onDisappear {
                     dismiss()
