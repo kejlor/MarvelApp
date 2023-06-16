@@ -18,3 +18,9 @@
 
 // FindOutButton
 "FindOutButtonText" = "Dowiedz się więcej";
+
+// DismissSheetButton
+"DismissButtonText" = "Zamknij";
+
+// HomeView
+"HomeViewNavigationTitle" = "Komiksy Marvel'a";

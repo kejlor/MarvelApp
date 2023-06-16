@@ -24,9 +24,17 @@ final class ComicListViewModel: ObservableObject {
             print("Request failed with error: \(error)")
         }
     }
+    
+    func getMoreComics() async {
+        do {
+            self.comics.append(contentsOf: try await comicsRepository.fetchMoreComics().data.results.compactMap(ComicViewModel.init))
+        } catch {
+            print("Request failed with error: \(error)")
+        }
+    }
 }
 
-struct ComicViewModel: Identifiable {
+struct ComicViewModel: Identifiable{
     
     private var comic: Comic
     
@@ -35,38 +43,42 @@ struct ComicViewModel: Identifiable {
     }
     
     var id: Int {
-        comic.id
+        comic.id ?? 0
     }
     
     var title: String {
-        comic.title
+        comic.title ?? "Title not found"
     }
     
-    var description: String? {
-        comic.description ?? ""
+    var description: String {
+        comic.description ?? "Empty description"
     }
     
     var thumbnailPath: String {
-        comic.thumbnail.path
+        comic.thumbnail?.path ?? "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
     }
     
     var creators: String {
         var names: [String] = []
         
-        for character in comic.creators.items {
+        for character in comic.creators?.items ?? [] {
             names.append(character.name)
         }
         
         let joinedNames = names.joined(separator: ", ")
         
+        if joinedNames == "" {
+            return "Creators not found"
+        }
+        
         return joinedNames
     }
     
     var moreData: String {
-        if comic.urls[0].type == "detail" {
-            return comic.urls[0].url
+        if comic.urls?[0].type == "detail" {
+            return comic.urls?[0].url ?? ""
         } else {
-            return ""
+            return "More data not found"
         }
     }
 }
@@ -88,3 +100,13 @@ struct CreatorViewModel: Identifiable {
     }
 }
 
+extension ComicViewModel: Hashable {
+    
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(id)
+    }
+    
+    static func == (lhs: ComicViewModel, rhs: ComicViewModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+}
