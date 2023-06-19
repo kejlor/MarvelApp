@@ -10,8 +10,7 @@ import SwiftUI
 final class PhotosUserDefaults {
     static let instance = PhotosUserDefaults()
     
-    private init() {
-    }
+    private init() { }
     
     func addToUserDefaults(key: String, value: UIImage) {
         let data = CoverImage(photo: value).photo
