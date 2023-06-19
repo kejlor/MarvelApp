@@ -10,7 +10,6 @@ import SwiftUI
 struct ComicSheetView: View {
     var comicVM: ComicViewModel
     @State var isAnimating = false
-    var viewWidth = UIScreen.main.bounds.width
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -38,7 +37,7 @@ struct ComicSheetView: View {
                 Spacer()
                     .frame(height: ComicSheetViewParameters.spacerHeight)
             }
-            .offset(x: isAnimating ? ComicSheetViewParameters.comicSheetViewOffsetAnimation : viewWidth)
+            .offset(x: isAnimating ? ComicSheetViewParameters.comicSheetViewOffsetAnimation : UIScreen.main.bounds.width)
             .opacity(isAnimating ? ComicSheetViewParameters.comicSheetOpacityVisible : ComicSheetViewParameters.comicSheetOpacityInvisible)
             
             FindOutButton(stringUrl: comicVM.moreData)
