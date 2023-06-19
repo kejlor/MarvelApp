@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct DownloadImageView: View {
-    private var imageLoadVM: ImageLoadViewModel
-    
-    init(url: String, key: String) async  {
-        self.imageLoadVM = await ImageLoadViewModel(url: url, key: key)
-    }
+    @StateObject private var imageLoadVM = ImageLoadViewModel()
+       
+      init(url: String, key: String) {
+        self.imageLoadVM.urlString = url
+        self.imageLoadVM.imageKey = key
+      }
     
     var body: some View {
         ZStack {
@@ -23,5 +24,8 @@ struct DownloadImageView: View {
                     .resizable()
             }
         }
+        .task {
+              await self.imageLoadVM.getImage()
+            }
     }
 }

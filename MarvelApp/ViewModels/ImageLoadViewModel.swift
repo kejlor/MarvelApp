@@ -6,21 +6,18 @@
 //
 
 import SwiftUI
-import Combine
 
 final class ImageLoadViewModel: ObservableObject {
     @Published var image: UIImage? = nil
     @Published var isLoading = false
+    @State var isShowingAlert = true
     let photosUserDefaults = PhotosUserDefaults.instance
     private var comicsRepository: ComicsRepository
-    let urlString: String
-    let imageKey: String
+    var urlString: String = ""
+    var imageKey: String = ""
     
-    init(url: String, key: String) async {
-        urlString = url
-        imageKey = key
+    init() {
         self.comicsRepository = ComicsRepository()
-        await getImage()
     }
     
     func getImage() async {
@@ -43,7 +40,8 @@ final class ImageLoadViewModel: ObservableObject {
                 }
             }
         } catch {
-            print("Unable to download cover image data: \(error)")
+            isShowingAlert = true
+            print("Error")
         }
     }
 }
