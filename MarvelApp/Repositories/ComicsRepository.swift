@@ -35,7 +35,7 @@ public final class ComicsRepository {
         return try await networkService.fetchData(url: comicsURL)
     }
     
-    func fetchImage(url: String) async throws -> ComicsResponse? {
+    func fetchImage(url: String) async throws -> CoverImage? {
         return try await networkService.fetchData(url: url)
     }
 }

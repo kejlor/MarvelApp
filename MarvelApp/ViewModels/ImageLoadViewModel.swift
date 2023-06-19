@@ -35,16 +35,11 @@ final class ImageLoadViewModel: ObservableObject {
         do {
             if let downloadedCover = try await comicsRepository.fetchImage(url: urlString) {
 //                self.isLoading = false
-//                if let imageData = photosUserDefaults.getImage(key: downloadedCover.path + ".jpg") {
+                if let imageData = photosUserDefaults.getImage(key: downloadedCover) {
 //                    self.image = imageData
 //                    self.photosUserDefaults.addToUserDefaults(key: self.imageKey, value: imageData)
 //                }
-                
-                
-//                if let image = UIImage(data: downloadedCover.photo) {
-//                    self.image = image
-//                    self.photosUserDefaults.addToUserDefaults(key: self.imageKey, value: image)
-//                }
+                }
             }
         } catch {
 //            self.isShowingAlert = true
