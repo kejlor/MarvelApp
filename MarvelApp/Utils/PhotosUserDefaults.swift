@@ -9,19 +9,22 @@ import SwiftUI
 
 final class PhotosUserDefaults {
     static let instance = PhotosUserDefaults()
+    @Published var isShowingAlertAdd = false
+    @Published var isShowingAlertGet = false
     
     private init() { }
     
     func addToUserDefaults(key: String, value: UIImage) {
-        let data = CoverImage(photo: value).photo
+        let data = CoverImage(photo: value)?.photo
         let documents = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         let url = documents.appendingPathComponent(key)
         
         do {
-            try data.write(to: url)
+            try data?.write(to: url)
             UserDefaults.standard.set(url, forKey: "SavedData")
         } catch {
             print("Unable to Write Data to Disk (\(error))")
+            isShowingAlertAdd = true
         }
     }
     
@@ -33,17 +36,22 @@ final class PhotosUserDefaults {
                 return UIImage(data: cover.photo)
             } catch {
                 print("Unable to get image from User Defaults")
+                isShowingAlertGet = true
             }
         }
         
-        return UIImage()
+        return nil
     }
 }
 
 public struct CoverImage: Codable {
     public let photo: Data
     
-    public init(photo: UIImage) {
-        self.photo = photo.jpegData(compressionQuality: 0.5)!
+    public init?(photo: UIImage) {
+        if let photo = photo.jpegData(compressionQuality: 0.5) {
+            self.photo = photo
+        } else {
+            return nil
+        }
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 final class ImageLoadViewModel: ObservableObject {
     @Published var image: UIImage? = nil
     @Published var isLoading = false
-    @State var isShowingAlert = true
+    @Published var isShowingAlert = true
     let photosUserDefaults = PhotosUserDefaults.instance
     private var comicsRepository: ComicsRepository
     var urlString: String = ""
