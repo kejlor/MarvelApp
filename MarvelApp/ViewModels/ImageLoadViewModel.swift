@@ -15,6 +15,7 @@ final class ImageLoadViewModel: ObservableObject {
     
     var cancellables = Set<AnyCancellable>()
     let manager = PhotosCacheManager.instance
+    let photosUserDefaults = PhotosUserDefaults.instance
     
     let urlString: String
     let imageKey: String
@@ -26,8 +27,8 @@ final class ImageLoadViewModel: ObservableObject {
     }
     
     func getImage() {
-        if let savedImage = manager.get(key: imageKey) {
-            image = savedImage
+        if let storedImage = photosUserDefaults.getImage(key: imageKey) {
+            image = storedImage
         } else {
             downloadImage()
         }
@@ -50,7 +51,7 @@ final class ImageLoadViewModel: ObservableObject {
                       let image = returnedImage else { return }
                 
                 self.image = image
-                self.manager.add(key: self.imageKey, value: image)
+                self.photosUserDefaults.addToUserDefaults(key: self.imageKey, value: image)
             }
             .store(in: &cancellables)
     }
