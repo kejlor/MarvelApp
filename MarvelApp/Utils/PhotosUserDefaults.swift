@@ -33,7 +33,7 @@ final class PhotosUserDefaults {
                 let cover = try decoder.decode(CoverImage.self, from: data)
                 return UIImage(data: cover.photo)!
             } catch {
-                print("")
+                print("Unable to get image from User Defaults")
             }
         }
         
