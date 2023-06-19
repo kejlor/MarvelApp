@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ComicSheetView: View {
     var comicVM: ComicViewModel
+    @State var isAnimating = false
+    var viewWidth = UIScreen.main.bounds.width
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -18,10 +20,12 @@ struct ComicSheetView: View {
                     .font(.title3)
                     .bold()
                     .padding(.vertical, ComicSheetViewParameters.titlePadding)
+                    .animation(.easeOut(duration: ComicSheetViewParameters.titleAnimationDuration), value: isAnimating)
                 
                 Text(comicVM.creators)
                     .font(.caption)
                     .foregroundColor(.secondary)
+                    .animation(.easeOut(duration: ComicSheetViewParameters.creatorsAnimationDuration), value: isAnimating)
                 
                 ScrollView {
                     Text(comicVM.description)
@@ -34,8 +38,13 @@ struct ComicSheetView: View {
                 Spacer()
                     .frame(height: ComicSheetViewParameters.spacerHeight)
             }
+            .offset(x: isAnimating ? ComicSheetViewParameters.comicSheetViewOffsetAnimation : viewWidth)
+            .opacity(isAnimating ? ComicSheetViewParameters.comicSheetOpacityVisible : ComicSheetViewParameters.comicSheetOpacityInvisible)
             
             FindOutButton(stringUrl: comicVM.moreData)
+        }
+        .onAppear {
+            isAnimating = true
         }
     }
 }
@@ -50,4 +59,9 @@ enum ComicSheetViewParameters {
     static let titlePadding: CGFloat = 2
     static let descriptionPadding: CGFloat = 5
     static let spacerHeight: CGFloat = 150
+    static let comicSheetViewOffsetAnimation: CGFloat = 0
+    static let comicSheetOpacityVisible: CGFloat = 1
+    static let comicSheetOpacityInvisible: CGFloat = 0
+    static let titleAnimationDuration: Double = 1.5
+    static let creatorsAnimationDuration: Double = 1.8
 }
