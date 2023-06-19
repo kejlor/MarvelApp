@@ -9,11 +9,8 @@ import SwiftUI
 
 struct DownloadImageView: View {
     @StateObject private var imageLoadVM = ImageLoadViewModel()
-    
-    init(url: String, key: String) {
-        self.imageLoadVM.urlString = url
-        self.imageLoadVM.imageKey = key
-    }
+    var url: String
+    var key: String
     
     var body: some View {
         ZStack {
@@ -26,6 +23,10 @@ struct DownloadImageView: View {
         }
         .alert(isPresented: $imageLoadVM.isShowingAlert) {
             Alert(title: Text("Error while downloading"), message: Text("Unable to download cover image"), dismissButton: .default(Text("Ok")))
+        }
+        .onAppear {
+            self.imageLoadVM.urlString = url
+            self.imageLoadVM.imageKey = key
         }
         .task {
             await self.imageLoadVM.getImage()

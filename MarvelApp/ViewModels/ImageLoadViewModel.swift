@@ -10,7 +10,7 @@ import SwiftUI
 final class ImageLoadViewModel: ObservableObject {
     @Published var image: UIImage? = nil
     @Published var isLoading = false
-    @Published var isShowingAlert = true
+    @Published var isShowingAlert = false
     let photosUserDefaults = PhotosUserDefaults.instance
     private var comicsRepository: ComicsRepository
     var urlString: String = ""
@@ -28,21 +28,29 @@ final class ImageLoadViewModel: ObservableObject {
         }
     }
     
+    
     func downloadCoverImage() async {
-        isLoading = true
+//        isLoading = true
         
         do {
             if let downloadedCover = try await comicsRepository.fetchImage(url: urlString) {
-                self.isLoading = false
-                if let image = UIImage(data: downloadedCover.photo) {
-                    self.image = image
-                    self.photosUserDefaults.addToUserDefaults(key: self.imageKey, value: image)
-                }
+//                self.isLoading = false
+//                if let imageData = photosUserDefaults.getImage(key: downloadedCover.path + ".jpg") {
+//                    self.image = imageData
+//                    self.photosUserDefaults.addToUserDefaults(key: self.imageKey, value: imageData)
+//                }
+                
+                
+//                if let image = UIImage(data: downloadedCover.photo) {
+//                    self.image = image
+//                    self.photosUserDefaults.addToUserDefaults(key: self.imageKey, value: image)
+//                }
             }
         } catch {
-            isShowingAlert = true
-            print("Error")
+//            self.isShowingAlert = true
+            print(error)
         }
     }
+
 }
 
