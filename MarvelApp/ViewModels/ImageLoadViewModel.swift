@@ -37,12 +37,13 @@ final class ImageLoadViewModel: ObservableObject {
         do {
             if let downloadedCover = try await comicsRepository.fetchImage(url: urlString) {
                 self.isLoading = false
-                let image = UIImage(data: downloadedCover.photo)!
-                self.image = image
-                self.photosUserDefaults.addToUserDefaults(key: self.imageKey, value: image)
+                if let image = UIImage(data: downloadedCover.photo) {
+                    self.image = image
+                    self.photosUserDefaults.addToUserDefaults(key: self.imageKey, value: image)
+                }
             }
         } catch {
-            print("")
+            print("Unable to download cover image data: \(error)")
         }
     }
 }

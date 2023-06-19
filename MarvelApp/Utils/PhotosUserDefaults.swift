@@ -30,7 +30,7 @@ final class PhotosUserDefaults {
             do {
                 let decoder = JSONDecoder()
                 let cover = try decoder.decode(CoverImage.self, from: data)
-                return UIImage(data: cover.photo)!
+                return UIImage(data: cover.photo)
             } catch {
                 print("Unable to get image from User Defaults")
             }
