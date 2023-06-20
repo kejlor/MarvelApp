@@ -35,10 +35,6 @@ public final class ComicsRepository {
         return try await networkService.fetchData(url: comicsURL)
     }
     
-    func fetchImage(url: String) async throws -> CoverImage? {
-        return try await networkService.fetchData(url: url)
-    }
-    
     func getImage(from string: String) async throws -> UIImage? {
         guard let imageData = try await networkService.fetchImage(url: string) else { return nil }
         return UIImage(data: imageData)

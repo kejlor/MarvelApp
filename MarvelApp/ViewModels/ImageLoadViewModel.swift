@@ -9,7 +9,7 @@ import SwiftUI
 
 final class ImageLoadViewModel: ObservableObject {
     @Published var image: UIImage? = nil
-    @Published var isLoading = false
+    @Published var isLoading = true
     @Published var isShowingAlert = false
     let photosUserDefaults = PhotosUserDefaults.shared
     private var comicsRepository: ComicsRepository
