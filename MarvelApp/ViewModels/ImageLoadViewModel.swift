@@ -10,7 +10,6 @@ import SwiftUI
 final class ImageLoadViewModel: ObservableObject {
     @Published var image: UIImage? = nil
     @Published var isLoading = true
-    @Published var isShowingAlert = false
     let photosUserDefaults = PhotosUserDefaults.shared
     private var comicsRepository: ComicsRepository
     var urlString: String = ""
@@ -37,9 +36,6 @@ final class ImageLoadViewModel: ObservableObject {
                 }
             }
         } catch {
-            DispatchQueue.main.async {
-                self.isShowingAlert = true
-            }
             print(error)
         }
     }

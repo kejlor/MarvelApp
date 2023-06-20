@@ -21,9 +21,6 @@ struct DownloadImageView: View {
                     .resizable()
             }
         }
-        .alert(isPresented: $imageLoadVM.isShowingAlert) {
-            Alert(title: Text("Error while downloading"), message: Text("Unable to download cover image"), dismissButton: .default(Text("Ok")))
-        }
         .onAppear {
             self.imageLoadVM.urlString = url
             self.imageLoadVM.imageKey = key

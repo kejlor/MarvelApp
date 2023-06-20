@@ -11,6 +11,8 @@ import Combine
 @MainActor
 final class ComicListViewModel: ObservableObject {
     @Published var comics = [ComicViewModel]()
+    @Published var isShowingAlertGetComics = false
+    @Published var isShowingAlertGetMoreComics = false
     private var comicsRepository: ComicsRepository
     
     init() {
@@ -21,7 +23,7 @@ final class ComicListViewModel: ObservableObject {
         do {
             try await self.comics = comicsRepository.fetchComics().data.results.compactMap(ComicViewModel.init)
         } catch {
-            print("Request failed with error: \(error)")
+            isShowingAlertGetComics = true
         }
     }
     
@@ -29,7 +31,7 @@ final class ComicListViewModel: ObservableObject {
         do {
             self.comics.append(contentsOf: try await comicsRepository.fetchMoreComics().data.results.compactMap(ComicViewModel.init))
         } catch {
-            print("Request failed with error: \(error)")
+            isShowingAlertGetMoreComics = true
         }
     }
 }

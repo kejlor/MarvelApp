@@ -18,6 +18,12 @@ struct HomeView: View {
                 ComicListView(comics: vm.comics)
             }
         }
+        .alert(isPresented: $vm.isShowingAlertGetComics) {
+            Alert(title: Text("Error while fetching comics"), message: Text("Unable to fetch comics"), dismissButton: .default(Text("Ok")))
+        }
+        .alert(isPresented: $vm.isShowingAlertGetMoreComics) {
+            Alert(title: Text("Error while fetching additional comics"), message: Text("Unable to fetch additional comics"), dismissButton: .default(Text("Ok")))
+        }
         .task {
             await vm.getComics()
         }
