@@ -36,4 +36,16 @@ final class ViewModelsUnitTests: XCTestCase {
         await imageLoadVM.getImage()
         XCTAssertEqual(UIImage(systemName: "house")?.pngData(), imageLoadVM.image?.pngData())
     }
+    
+    func test_imageLoadVM_should_download_cover_image() async {
+        let imageLoadVM = ImageLoadViewModel(comicsRepository: MockComicsRepository(networkService: MockNetworkService()))
+        imageLoadVM.urlString = "car"
+        imageLoadVM.imageKey = "car"
+        await imageLoadVM.getImage()
+        let temporaryImage = imageLoadVM.image
+        await imageLoadVM.downloadCoverImage()
+        XCTAssertEqual(temporaryImage?.pngData(), imageLoadVM.image?.pngData())
+        XCTAssertEqual(false, imageLoadVM.isLoading)
+        XCTAssertEqual("car", imageLoadVM.urlString)
+    }
 }
