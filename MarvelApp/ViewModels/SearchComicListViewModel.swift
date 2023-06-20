@@ -13,7 +13,7 @@ final class SearchComicListViewModel: ObservableObject {
     private var comicsRepository: ComicsRepository
     
     init() {
-        self.comicsRepository = ComicsRepository()
+        self.comicsRepository = ComicsRepository(networkService: NetworkService())
     }
     
     func getComicsByTitle(for title: String) async {

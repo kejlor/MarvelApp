@@ -16,7 +16,7 @@ final class ImageLoadViewModel: ObservableObject {
     var imageKey: String = ""
     
     init() {
-        self.comicsRepository = ComicsRepository()
+        self.comicsRepository = ComicsRepository(networkService: NetworkService())
     }
     
     func getImage() async {

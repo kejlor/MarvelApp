@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class NetworkService {
+class NetworkService {
     var session = URLSession.shared
     private var decoder = JSONDecoder()
     

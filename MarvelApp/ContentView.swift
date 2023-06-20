@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var comicsVM = ComicListViewModel()
+    @StateObject private var comicsVM = ComicListViewModel(comicRepository: ComicsRepository(networkService: NetworkService()))
     @StateObject private var searchVM = SearchComicListViewModel()
     
     var body: some View {

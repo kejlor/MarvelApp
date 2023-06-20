@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public final class ComicsRepository {
+public class ComicsRepository {
     private var networkService: NetworkService
     private var baseURL = "https://gateway.marvel.com/v1/public/comics?ts=\(ENV.TIME_STAMP)&apikey=\(ENV.SERVICE_API_KEY)&hash=\(ENV.SERVICE_HASH)"
     private var offsetLimit = 0
@@ -16,8 +16,8 @@ public final class ComicsRepository {
         return "\(baseURL)&limit=25&offset=\(offsetLimit)&orderBy=-onsaleDate"
     }
     
-    init() {
-        self.networkService = NetworkService()
+    init(networkService: NetworkService) {
+        self.networkService = networkService
     }
     
     func fetchComics() async throws -> ComicsResponse {
@@ -39,4 +39,8 @@ public final class ComicsRepository {
         guard let imageData = try await networkService.fetchImage(url: string) else { return nil }
         return UIImage(data: imageData)
     }
+}
+
+var ENV: APIKeyable {
+    return ProdENV()
 }
