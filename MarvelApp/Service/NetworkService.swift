@@ -5,7 +5,7 @@
 //  Created by Bartosz Wojtkowiak on 12/05/2023.
 //
 
-import SwiftUI
+import Foundation
 
 final class NetworkService {
     var session = URLSession.shared
@@ -20,6 +20,12 @@ final class NetworkService {
         guard let url = URL(string: url) else { throw NetworkServiceError.invalidURL }
         let (data, _) = try await session.data(from: url)
         return try decoder.decode(T.self, from: data)
+    }
+    
+    func fetchImage(url: String) async throws -> Data? {
+        guard let url = URL(string: url) else { throw NetworkServiceError.invalidURL }
+        let (data, _) = try await session.data(from: url)
+        return data
     }
 }
 

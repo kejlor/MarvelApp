@@ -8,7 +8,7 @@
 import SwiftUI
 
 final class PhotosUserDefaults {
-    static let instance = PhotosUserDefaults()
+    static let shared = PhotosUserDefaults()
     @Published var isShowingAlertAdd = false
     @Published var isShowingAlertGet = false
     
@@ -32,8 +32,6 @@ final class PhotosUserDefaults {
         if let data = UserDefaults.standard.data(forKey: key) {
             do {
                 let decoder = JSONDecoder()
-//                let cover = try decoder.decode(Thumbnail.self, from: data)
-                print(data)
                 return UIImage(data: data)
             } catch {
                 print("Unable to get image from User Defaults")

@@ -13,13 +13,9 @@ struct ComicListEntry: View {
     
     var body: some View {
         HStack {
-            /*
-            KFImage(URL(string: "\(comicVM.thumbnailPath).jpg"))
-                .resizable()
+            DownloadImageView(url: "\(comicVM.thumbnailPath).jpg", key: comicVM.title)
                 .cornerRadius(ComicListEntryParameters.comicImageCornerRadius)
                 .frame(width: ComicListEntryParameters.comicImageWidth, height: ComicListEntryParameters.comicImageHeight)
-             */
-            DownloadImageView(url: "\(comicVM.thumbnailPath).jpg", key: comicVM.title)
             
             VStack(alignment:. leading) {
                 Text(comicVM.title)

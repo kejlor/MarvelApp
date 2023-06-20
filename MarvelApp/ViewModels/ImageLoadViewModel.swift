@@ -11,7 +11,7 @@ final class ImageLoadViewModel: ObservableObject {
     @Published var image: UIImage? = nil
     @Published var isLoading = false
     @Published var isShowingAlert = false
-    let photosUserDefaults = PhotosUserDefaults.instance
+    let photosUserDefaults = PhotosUserDefaults.shared
     private var comicsRepository: ComicsRepository
     var urlString: String = ""
     var imageKey: String = ""
@@ -28,21 +28,16 @@ final class ImageLoadViewModel: ObservableObject {
         }
     }
     
-    
     func downloadCoverImage() async {
-//        isLoading = true
-        
         do {
-            if let downloadedCover = try await comicsRepository.fetchImage(url: urlString) {
-//                self.isLoading = false
-                if let imageData = photosUserDefaults.getImage(key: downloadedCover) {
-//                    self.image = imageData
-//                    self.photosUserDefaults.addToUserDefaults(key: self.imageKey, value: imageData)
-//                }
+            if let image = try await self.comicsRepository.getImage(from: self.urlString) {
+                DispatchQueue.main.async {
+                    self.image = image
+                    self.isLoading = false
                 }
             }
         } catch {
-//            self.isShowingAlert = true
+            self.isShowingAlert = true
             print(error)
         }
     }
