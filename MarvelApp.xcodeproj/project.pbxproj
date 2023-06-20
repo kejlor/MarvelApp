@@ -152,10 +152,10 @@
 		5CC49CBD2A41A00D00C022CC /* MarvelAppUnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				5CC49CE82A41C60100C022CC /* Services */,
 				5CC49CD32A41AC9600C022CC /* UnitTests */,
 				5CC49CCB2A41A8F300C022CC /* JSONResponses */,
 				5CC49CC52A41A05A00C022CC /* Repositories */,
-				5CC49CD02A41AA1200C022CC /* MockNetworkService.swift */,
 			);
 			path = MarvelAppUnitTests;
 			sourceTree = "<group>";
@@ -183,6 +183,14 @@
 				5CC49CE62A41BFEF00C022CC /* ViewModelsUnitTests.swift */,
 			);
 			path = UnitTests;
+			sourceTree = "<group>";
+		};
+		5CC49CE82A41C60100C022CC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5CC49CD02A41AA1200C022CC /* MockNetworkService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		E96A09142A0E6957008902C3 = {
