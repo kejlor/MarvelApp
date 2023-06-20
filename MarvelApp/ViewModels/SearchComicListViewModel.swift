@@ -12,8 +12,8 @@ final class SearchComicListViewModel: ObservableObject {
     @Published var filteredComics = [ComicViewModel]()
     private var comicsRepository: ComicsRepository
     
-    init() {
-        self.comicsRepository = ComicsRepository(networkService: NetworkService())
+    init(comicsRepository: ComicsRepository = ComicsRepository(networkService: NetworkService())) {
+        self.comicsRepository = comicsRepository
     }
     
     func getComicsByTitle(for title: String) async {

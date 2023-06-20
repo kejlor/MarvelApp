@@ -14,8 +14,8 @@ final class ComicListViewModel: ObservableObject {
     @Published var isShowingAlertGetMoreComics = false
     private var comicsRepository: ComicsRepository
     
-    init(comicRepository: ComicsRepository = ComicsRepository(networkService: NetworkService())) {
-        self.comicsRepository = comicRepository
+    init(comicsRepository: ComicsRepository = ComicsRepository(networkService: NetworkService())) {
+        self.comicsRepository = comicsRepository
     }
     
     func getComics() async {
