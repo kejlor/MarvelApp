@@ -37,7 +37,9 @@ final class ImageLoadViewModel: ObservableObject {
                 }
             }
         } catch {
-            self.isShowingAlert = true
+            DispatchQueue.main.async {
+                self.isShowingAlert = true
+            }
             print(error)
         }
     }

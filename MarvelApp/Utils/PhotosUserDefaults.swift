@@ -32,7 +32,8 @@ final class PhotosUserDefaults {
         if let data = UserDefaults.standard.data(forKey: key) {
             do {
                 let decoder = JSONDecoder()
-                return UIImage(data: data)
+                let cover = try decoder.decode(CoverImage.self, from: data)
+                return UIImage(data: cover.photo)
             } catch {
                 print("Unable to get image from User Defaults")
                 isShowingAlertGet = true
