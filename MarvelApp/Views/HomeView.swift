@@ -18,6 +18,12 @@ struct HomeView: View {
                 ComicListView(comics: vm.comics)
             }
         }
+        .alert(isPresented: $vm.isShowingAlertGetComics) {
+            Alert(title: Text("HomeViewAlertGetComicsTitleText".localized), message: Text("HomeViewAlertGetComicsMessageText".localized), dismissButton: .default(Text("HomeViewAlertGetComicsDismissButtonText".localized)))
+        }
+        .alert(isPresented: $vm.isShowingAlertGetMoreComics) {
+            Alert(title: Text("HomeViewAlertGetMoreComicsTitleText".localized), message: Text("HomeViewAlertGetMoreComicsMessageText".localized), dismissButton: .default(Text("HomeViewAlertGetMoreComicsDismissButtonText".localized)))
+        }
         .task {
             await vm.getComics()
         }

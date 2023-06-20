@@ -24,3 +24,9 @@
 
 // HomeView
 "HomeViewNavigationTitle" = "Marvel Comics";
+"HomeViewAlertGetComicsTitleText" = "Error while fetching comics";
+"HomeViewAlertGetComicsMessageText" = "Unable to fetch comics";
+"HomeViewAlertGetComicsDismissButtonText" = "Ok";
+"HomeViewAlertGetMoreComicsTitleText" = "Error while fetching additional comics";
+"HomeViewAlertGetMoreComicsMessageText" = "Unable to fetch additional comics";
+"HomeViewAlertGetMoreComicsDismissButtonText" = "Ok";

@@ -24,3 +24,9 @@
 
 // HomeView
 "HomeViewNavigationTitle" = "Komiksy Marvel'a";
+"HomeViewAlertGetComicsTitleText" = "Błąd podczas pobierania komiksów";
+"HomeViewAlertGetComicsMessageText" = "Nie da się pobrać komiksów";
+"HomeViewAlertGetComicsDismissButtonText" = "Ok";
+"HomeViewAlertGetMoreComicsTitleText" = "Błąd podczas pobierania dodatkowych komiksów";
+"HomeViewAlertGetMoreComicsMessageText" = "Nie da się pobrać dodatkowych komiksów";
+"HomeViewAlertGetMoreComicsDismissButtonText" = "Ok";
