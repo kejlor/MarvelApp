@@ -34,4 +34,9 @@ public final class ComicsRepository {
         let comicsURL = urlString + "&title=\(title)"
         return try await networkService.fetchData(url: comicsURL)
     }
+    
+    func getImage(from string: String) async throws -> UIImage? {
+        guard let imageData = try await networkService.fetchImage(url: string) else { return nil }
+        return UIImage(data: imageData)
+    }
 }

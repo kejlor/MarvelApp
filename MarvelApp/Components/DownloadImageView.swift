@@ -8,20 +8,25 @@
 import SwiftUI
 
 struct DownloadImageView: View {
-    @StateObject var loader: ImageLoadViewModel
-    
-    init(url: String, key: String) {
-        _loader = StateObject(wrappedValue: ImageLoadViewModel(url: url, key: key))
-    }
+    @StateObject private var imageLoadVM = ImageLoadViewModel()
+    var url: String
+    var key: String
     
     var body: some View {
         ZStack {
-            if loader.isLoading {
+            if imageLoadVM.isLoading {
                 ProgressView()
-            } else if let image = loader.image {
+            } else if let image = imageLoadVM.image {
                 Image(uiImage: image)
                     .resizable()
             }
+        }
+        .onAppear {
+            self.imageLoadVM.urlString = url
+            self.imageLoadVM.imageKey = key
+        }
+        .task {
+            await self.imageLoadVM.getImage()
         }
     }
 }
