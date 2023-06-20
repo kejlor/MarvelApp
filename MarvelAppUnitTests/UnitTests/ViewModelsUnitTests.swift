@@ -48,4 +48,11 @@ final class ViewModelsUnitTests: XCTestCase {
         XCTAssertEqual(false, imageLoadVM.isLoading)
         XCTAssertEqual("car", imageLoadVM.urlString)
     }
+    
+    func test_add_to_user_defaults_should_add_and_get() {
+        if let catImage = UIImage(systemName: "cat") {
+            PhotosUserDefaults.shared.addToUserDefaults(key: "cat", value: catImage)
+        }
+        XCTAssertEqual(UIImage(systemName: "cat"), PhotosUserDefaults.shared.getImage(key: "cat"))
+    }
 }
