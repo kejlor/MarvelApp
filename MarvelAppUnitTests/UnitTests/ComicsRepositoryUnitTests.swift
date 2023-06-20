@@ -8,11 +8,17 @@
 import XCTest
 
 @testable import MarvelApp
+
+@MainActor
 class ComicsRepositoryUnitTests: XCTestCase {
-    @MainActor
-    func test_should_not_get_any_data() async {
+    func test_should_not_get_any_images() async {
         let comicsRepository = ComicsRepository(networkService: MockNetworkService())
         let fetchedImage = try? await comicsRepository.getImage(from: "")
         XCTAssertEqual(fetchedImage, nil)
+    }
+    
+    func test_urlString_should_return_value() async {
+        let comicsRepository = MockComicsRepository(networkService: MockNetworkService())
+        XCTAssertEqual("Random string", comicsRepository.urlString)
     }
 }
