@@ -14,7 +14,6 @@
 		5CC49CB52A40467C00C022CC /* PhotosUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC49CB42A40467C00C022CC /* PhotosUserDefaults.swift */; };
 		5CC49CC72A41A06900C022CC /* MockComicsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC49CC62A41A06900C022CC /* MockComicsRepository.swift */; };
 		5CC49CCA2A41A37B00C022CC /* MockComicsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC49CC62A41A06900C022CC /* MockComicsRepository.swift */; };
-		5CC49CCF2A41A96900C022CC /* comics-success-response.json in Resources */ = {isa = PBXBuildFile; fileRef = 5CC49CCE2A41A96900C022CC /* comics-success-response.json */; };
 		5CC49CD12A41AA1200C022CC /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC49CD02A41AA1200C022CC /* MockNetworkService.swift */; };
 		5CC49CD22A41AA3000C022CC /* MockNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC49CD02A41AA1200C022CC /* MockNetworkService.swift */; };
 		5CC49CD52A41ACD200C022CC /* ComicsRepositoryUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC49CD42A41ACD200C022CC /* ComicsRepositoryUnitTests.swift */; };
@@ -75,7 +74,6 @@
 		5CC49CB42A40467C00C022CC /* PhotosUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosUserDefaults.swift; sourceTree = "<group>"; };
 		5CC49CBC2A41A00D00C022CC /* MarvelAppUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelAppUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC49CC62A41A06900C022CC /* MockComicsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockComicsRepository.swift; sourceTree = "<group>"; };
-		5CC49CCE2A41A96900C022CC /* comics-success-response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "comics-success-response.json"; sourceTree = "<group>"; };
 		5CC49CD02A41AA1200C022CC /* MockNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkService.swift; sourceTree = "<group>"; };
 		5CC49CD42A41ACD200C022CC /* ComicsRepositoryUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsRepositoryUnitTests.swift; sourceTree = "<group>"; };
 		5CC49CE62A41BFEF00C022CC /* ViewModelsUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelsUnitTests.swift; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 			children = (
 				5CC49CE82A41C60100C022CC /* Services */,
 				5CC49CD32A41AC9600C022CC /* UnitTests */,
-				5CC49CCB2A41A8F300C022CC /* JSONResponses */,
 				5CC49CC52A41A05A00C022CC /* Repositories */,
 			);
 			path = MarvelAppUnitTests;
@@ -166,14 +163,6 @@
 				5CC49CC62A41A06900C022CC /* MockComicsRepository.swift */,
 			);
 			path = Repositories;
-			sourceTree = "<group>";
-		};
-		5CC49CCB2A41A8F300C022CC /* JSONResponses */ = {
-			isa = PBXGroup;
-			children = (
-				5CC49CCE2A41A96900C022CC /* comics-success-response.json */,
-			);
-			path = JSONResponses;
 			sourceTree = "<group>";
 		};
 		5CC49CD32A41AC9600C022CC /* UnitTests */ = {
@@ -399,7 +388,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CC49CDB2A41B07B00C022CC /* Keys.plist in Resources */,
-				5CC49CCF2A41A96900C022CC /* comics-success-response.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
