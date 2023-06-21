@@ -10,7 +10,7 @@ import XCTest
 @testable import MarvelApp
 
 @MainActor
-final class ViewModelsUnitTests: XCTestCase {
+class ViewModelsUnitTests: XCTestCase {
     func test_comicListViewModel_should_get_comics() async {
         let comicListVM = ComicListViewModel(comicsRepository: MockComicsRepository(networkService: MockNetworkService()))
         await comicListVM.getComics()
