@@ -30,7 +30,8 @@ class ComicsRepositoryUnitTests: XCTestCase {
     
     func test_fetchImage_should_return_data() async {
         let networkService = MockNetworkService()
+        let house = UIImage(systemName: "house.fill")
         let image = try? await networkService.fetchImage(url: "")
-        XCTAssertEqual(Data().self, image.self)
+        XCTAssertEqual(house?.pngData(), image)
     }
 }
