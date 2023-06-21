@@ -16,7 +16,3 @@ struct MarvelAppApp: App {
         }
     }
 }
-
-var ENV: APIKeyable {
-    return ProdENV()
-}

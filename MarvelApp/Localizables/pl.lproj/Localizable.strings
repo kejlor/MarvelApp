@@ -30,3 +30,10 @@
 "HomeViewAlertGetMoreComicsTitleText" = "Błąd podczas pobierania dodatkowych komiksów";
 "HomeViewAlertGetMoreComicsMessageText" = "Nie da się pobrać dodatkowych komiksów";
 "HomeViewAlertGetMoreComicsDismissButtonText" = "Ok";
+
+// ComicViewModel
+"ComicViewModelTitleNotFound" = "Tytuł nieznalezione";
+"ComicViewModelEmptyDescription" = "Pusty opis";
+"ComicViewModelCreatorsEmpty" = "Twórcy nieznalezieni";
+"ComicViewModelDetail" = "szczegóły";
+"ComicViewModelMoreData" = "Nie znaleziono więcej danych";

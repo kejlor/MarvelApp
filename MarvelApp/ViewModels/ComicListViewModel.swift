@@ -14,8 +14,8 @@ final class ComicListViewModel: ObservableObject {
     @Published var isShowingAlertGetMoreComics = false
     private var comicsRepository: ComicsRepository
     
-    init() {
-        self.comicsRepository = ComicsRepository()
+    init(comicsRepository: ComicsRepository = ComicsRepository(networkService: NetworkService())) {
+        self.comicsRepository = comicsRepository
     }
     
     func getComics() async {
@@ -48,11 +48,11 @@ struct ComicViewModel: Identifiable{
     }
     
     var title: String {
-        comic.title ?? "Title not found"
+        comic.title ?? "ComicViewModelTitleNotFound".localized
     }
     
     var description: String {
-        comic.description ?? "Empty description"
+        comic.description ?? "ComicViewModelEmptyDescription".localized
     }
     
     var thumbnailPath: String {
@@ -69,17 +69,17 @@ struct ComicViewModel: Identifiable{
         let joinedNames = names.joined(separator: ", ")
         
         if joinedNames == "" {
-            return "Creators not found"
+            return "ComicViewModelCreatorsEmpty".localized
         }
         
         return joinedNames
     }
     
     var moreData: String {
-        if comic.urls?[0].type == "detail" {
+        if comic.urls?[0].type == "ComicViewModelDetail".localized {
             return comic.urls?[0].url ?? ""
         } else {
-            return "More data not found"
+            return "ComicViewModelMoreData".localized
         }
     }
 }

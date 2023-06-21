@@ -30,3 +30,10 @@
 "HomeViewAlertGetMoreComicsTitleText" = "Error while fetching additional comics";
 "HomeViewAlertGetMoreComicsMessageText" = "Unable to fetch additional comics";
 "HomeViewAlertGetMoreComicsDismissButtonText" = "Ok";
+
+// ComicViewModel
+"ComicViewModelTitleNotFound" = "Title not found";
+"ComicViewModelEmptyDescription" = "Empty description";
+"ComicViewModelCreatorsEmpty" = "Creators not found";
+"ComicViewModelDetail" = "detail";
+"ComicViewModelMoreData" = "More data not found";
