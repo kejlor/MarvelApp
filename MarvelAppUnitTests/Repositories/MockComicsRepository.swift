@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class MockComicsRepository: ComicsRepository {
+final class MockComicsRepository: ComicsRepository {
     var session = URLSession.shared
     private var decoder = JSONDecoder()
     

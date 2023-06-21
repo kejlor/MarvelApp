@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MockNetworkService: NetworkService {
+final class MockNetworkService: NetworkService {
     private var decoder = JSONDecoder()
     
     func fetchData<T>() async throws -> T where T : Decodable {
