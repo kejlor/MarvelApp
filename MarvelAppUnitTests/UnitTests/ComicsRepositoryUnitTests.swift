@@ -22,10 +22,15 @@ class ComicsRepositoryUnitTests: XCTestCase {
         XCTAssertEqual("Random string", comicsRepository.urlString)
     }
     
-    func test_fetchData_should_not_return_decoded_data() async {
+    func test_fetchData_return_data_type() async {
+        struct MyObject: Codable, Equatable {
+            var something: String
+        }
+        let myObject = MyObject(something: "String")
+        let encoded = try? JSONEncoder().encode(myObject)
         let networkService = MockNetworkService()
-        let decodedType = try? await networkService.fetchData() as ComicsResponse
-        XCTAssertNil(decodedType)
+        let decoded = try? await networkService.fetchData(data: encoded ?? Data()) as MyObject
+        XCTAssertEqual(myObject.self, decoded.self)
     }
     
     func test_fetchImage_should_return_data() async {

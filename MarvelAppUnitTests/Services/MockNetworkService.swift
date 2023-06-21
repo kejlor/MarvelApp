@@ -11,8 +11,8 @@ import UIKit
 final class MockNetworkService: NetworkService {
     private var decoder = JSONDecoder()
     
-    func fetchData<T>() async throws -> T where T : Decodable {
-        return try decoder.decode(T.self, from: Data())
+    func fetchData<T>(data: Data) async throws -> T where T : Decodable {
+        return try decoder.decode(T.self, from: data)
     }
     
     override func fetchImage(url: String) async throws -> Data? {
