@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class MockNetworkService: NetworkService {
     private var decoder = JSONDecoder()
@@ -15,6 +16,6 @@ final class MockNetworkService: NetworkService {
     }
     
     override func fetchImage(url: String) async throws -> Data? {
-        return Data()
+        return UIImage(systemName: "house.fill")?.pngData()
     }
 }
