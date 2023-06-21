@@ -13,18 +13,23 @@ struct ComicListView: View {
     
     var body: some View {
         NavigationStack {
-            List(comics) { comic in
-                NavigationLink(value: comic) {
-                    ComicListEntry(comicVM: comic)
+            if comics.isEmpty {
+                ProgressView()
+            } else {
+                List(comics) { comic in
+                    NavigationLink(value: comic) {
+                        ComicListEntry(comicVM: comic)
+                    }
+                    .task { if comic.id == comics.last?.id {
+                        await vm.getMoreComics()
+                    } }
                 }
-                .task { if comic.id == comics.last?.id {
-                    await vm.getMoreComics()
-                } }
+                .navigationTitle("HomeViewNavigationTitle".localized)
+                .navigationDestination(for: ComicViewModel.self) { comic in
+                    DetailComicBookView(comicVM: comic)
+                }
             }
-            .navigationTitle("HomeViewNavigationTitle".localized)
-            .navigationDestination(for: ComicViewModel.self) { comic in
-                DetailComicBookView(comicVM: comic)
-            }
+            
         }
     }
 }
