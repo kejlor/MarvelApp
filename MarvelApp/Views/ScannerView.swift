@@ -11,12 +11,14 @@ struct ScannerView: View {
     @ObservedObject var viewModel = ScannerViewModel()
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .center) {
             QrCodeScannerView()
-            .found(r: self.viewModel.onFoundQrCode)
-            .torchLight(isOn: self.viewModel.torchIsOn)
-            .interval(delay: self.viewModel.scanInterval)
-            .padding()
+                .found(r: self.viewModel.onFoundQrCode)
+                .torchLight(isOn: self.viewModel.torchIsOn)
+                .interval(delay: self.viewModel.scanInterval)
+                .padding()
+            
+            QRRectangle()
         }
     }
 }
