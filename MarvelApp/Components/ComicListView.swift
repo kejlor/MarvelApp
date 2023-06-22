@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ComicListView: View {
     @EnvironmentObject var vm: ComicListViewModel
+    @State private var isShowingCameraSheet = false
     var comics: [ComicViewModel]
     
     var body: some View {
@@ -24,6 +25,18 @@ struct ComicListView: View {
             .navigationTitle("HomeViewNavigationTitle".localized)
             .navigationDestination(for: ComicViewModel.self) { comic in
                 DetailComicBookView(comicVM: comic)
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isShowingCameraSheet = true
+                    } label: {
+                        Image(systemName: "qrcode.viewfinder")
+                    }
+                }
+            }
+            .sheet(isPresented: $isShowingCameraSheet) {
+                ScannerView()
             }
         }
     }
