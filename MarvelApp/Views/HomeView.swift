@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var vm: ComicListViewModel
-    @EnvironmentObject var favouriteVM: FavouriteComicsViewModel
+    @EnvironmentObject var favouritesVM: FavouritesComicsViewModel
     
     var body: some View {
         VStack {
@@ -18,7 +18,7 @@ struct HomeView: View {
             } else {
                 ComicListView(comics: vm.comics)
                     .environmentObject(vm)
-                    .environmentObject(favouriteVM)
+                    .environmentObject(favouritesVM)
             }
         }
         .alert(isPresented: $vm.isShowingAlertGetComics) {

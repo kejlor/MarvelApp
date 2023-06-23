@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ComicListView: View {
     @EnvironmentObject var vm: ComicListViewModel
-    @EnvironmentObject var favouriteVM: FavouriteComicsViewModel
+    @EnvironmentObject var favouritesVM: FavouritesComicsViewModel
     var comics: [ComicViewModel]
     
     var body: some View {
@@ -19,13 +19,13 @@ struct ComicListView: View {
                     ComicListEntry(comicVM: comic)
                         .swipeActions {
                             Button {
-                                if favouriteVM.contains(comic) {
-                                    favouriteVM.remove(comic)
+                                if favouritesVM.contains(comic) {
+                                    favouritesVM.remove(comic)
                                 } else {
-                                    favouriteVM.add(comic)
+                                    favouritesVM.add(comic)
                                 }
                             } label: {
-                                Image(systemName: favouriteVM.contains(comic) ? "star.slash.fill" : "star")
+                                Image(systemName: favouritesVM.contains(comic) ? "star.slash.fill" : "star")
                             }
                         }
                 }
