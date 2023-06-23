@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ComicListView: View {
     @EnvironmentObject var vm: ComicListViewModel
+    @EnvironmentObject var favouriteVM: FavouriteComicsViewModel
     var comics: [ComicViewModel]
     
     var body: some View {
@@ -16,6 +17,17 @@ struct ComicListView: View {
             List(comics) { comic in
                 NavigationLink(value: comic) {
                     ComicListEntry(comicVM: comic)
+                        .swipeActions {
+                            Button {
+                                if favouriteVM.contains(comic) {
+                                    favouriteVM.remove(comic)
+                                } else {
+                                    favouriteVM.add(comic)
+                                }
+                            } label: {
+                                Image(systemName: favouriteVM.contains(comic) ? "star.slash.fill" : "star")
+                            }
+                        }
                 }
                 .task { if comic.id == comics.last?.id {
                     await vm.getMoreComics()
