@@ -18,7 +18,6 @@ struct QrCodeScannerView: UIViewRepresentable {
     private let delegate = QrCodeCameraDelegate()
     private let metadataOutput = AVCaptureMetadataOutput()
     
-    
     func torchLight(isOn: Bool) -> QrCodeScannerView {
         if let backCamera = AVCaptureDevice.default(for: AVMediaType.video) {
             if backCamera.hasTorch {
@@ -73,7 +72,6 @@ struct QrCodeScannerView: UIViewRepresentable {
                 session.startRunning()
             }
         }
-        
     }
     
     func makeUIView(context: UIViewRepresentableContext<QrCodeScannerView>) -> QrCodeScannerView.UIViewType {

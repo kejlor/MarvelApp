@@ -25,7 +25,7 @@ class QrCodeCameraDelegate: NSObject, AVCaptureMetadataOutputObjectsDelegate {
     }
     
     @objc func onSimulateScanning(){
-        foundBarcode(mockData ?? "Simulated QR-code result.")
+        foundBarcode(mockData ?? "323")
     }
     
     func foundBarcode(_ stringValue: String) {

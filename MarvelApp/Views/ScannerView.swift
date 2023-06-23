@@ -11,14 +11,24 @@ struct ScannerView: View {
     @ObservedObject var viewModel = ScannerViewModel()
     
     var body: some View {
-        ZStack(alignment: .center) {
-            QrCodeScannerView()
-                .found(r: self.viewModel.onFoundQrCode)
-                .torchLight(isOn: self.viewModel.torchIsOn)
-                .interval(delay: self.viewModel.scanInterval)
-                .padding()
+        VStack {
+            ZStack(alignment: .center) {
+                QrCodeScannerView()
+                    .found(r: self.viewModel.onFoundQrCode)
+                    .torchLight(isOn: self.viewModel.torchIsOn)
+                    .interval(delay: self.viewModel.scanInterval)
+                    .padding()
+                
+                QRRectangle()
+            }
             
-            QRRectangle()
+            Button {
+                self.viewModel.torchIsOn.toggle()
+            } label: {
+                Image(systemName: self.viewModel.torchIsOn ? "bolt.fill" : "bolt.slash.fill")
+                    .foregroundColor(.black)
+                    .imageScale(.large)
+            }
         }
     }
 }
