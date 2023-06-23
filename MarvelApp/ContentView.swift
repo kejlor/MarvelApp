@@ -30,6 +30,13 @@ struct ContentView: View {
                     }
                     .environmentObject(searchVM)
                     .environmentObject(favouritesVM)
+                
+                FavouritesComicsView()
+                    .tag(2)
+                    .tabItem {
+                        Image(systemName: "star.fill")
+                    }
+                    .environmentObject(favouritesVM)
             }
         }
     }

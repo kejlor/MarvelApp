@@ -8,7 +8,7 @@
 import Foundation
 
 final class FavouritesComicsViewModel: ObservableObject {
-    private var favouritesComics: [ComicViewModel]
+    @Published var favouritesComics: [ComicViewModel]
     private let saveKey = "Favourites"
     let userDefaults = PhotosUserDefaults.shared
     
