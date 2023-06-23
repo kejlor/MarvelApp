@@ -14,7 +14,6 @@ final class FavouritesComicsViewModel: ObservableObject {
     
     init() {
         favouritesComics = userDefaults.getFavourites() ?? [ComicViewModel]()
-        print(favouritesComics)
     }
     
     func contains(_ comicVM: ComicViewModel) -> Bool {
