@@ -27,6 +27,7 @@ struct ComicListView: View {
                             } label: {
                                 Image(systemName: favouritesVM.contains(comic) ? "star.slash.fill" : "star")
                             }
+                            .tint(favouritesVM.contains(comic) ? .red : .green)
                         }
                 }
                 .task { if comic.id == comics.last?.id {

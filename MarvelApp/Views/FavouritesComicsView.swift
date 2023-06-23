@@ -36,6 +36,7 @@ struct FavouritesComicsView: View {
                                 } label: {
                                     Image(systemName: favouritesVM.contains(comic) ? "star.slash.fill" : "star")
                                 }
+                                .tint(favouritesVM.contains(comic) ? .red : .green)
                             }
                     }
                 }
