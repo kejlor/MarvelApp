@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct CreatorResponse: Decodable {
+struct CreatorResponse: Codable {
     let items: [Creator]
 }
 
-struct Creator: Decodable {
+struct Creator: Codable {
     let name: String
 }
