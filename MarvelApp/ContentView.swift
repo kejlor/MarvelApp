@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var comicsVM = ComicListViewModel()
     @StateObject private var searchVM = SearchComicListViewModel()
+    @StateObject private var favouriteVM = FavouriteComicsViewModel()
     
     var body: some View {
         VStack {
@@ -20,6 +21,7 @@ struct ContentView: View {
                         Image(systemName: "house")
                     }
                     .environmentObject(comicsVM)
+                    .environmentObject(favouriteVM)
                 
                 SearchView()
                     .tag(1)
@@ -27,6 +29,7 @@ struct ContentView: View {
                         Image(systemName: "magnifyingglass")
                     }
                     .environmentObject(searchVM)
+                    .environmentObject(favouriteVM)
             }
         }
     }
