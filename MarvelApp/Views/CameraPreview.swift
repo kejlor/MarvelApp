@@ -41,8 +41,8 @@ class CameraPreview: UIView {
         self.addGestureRecognizer(gesture)
     }
     
-    @objc func onClick(){
-        delegate?.onSimulateScanning()
+    @objc func onClick() async {
+        await delegate?.onSimulateScanning()
     }
     
     override func layoutSubviews() {

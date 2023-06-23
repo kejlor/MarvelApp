@@ -15,7 +15,7 @@ final class ScannerViewModel: ObservableObject {
     
     @Published var torchIsOn: Bool = false
     @Published var lastQrCode: String = "Qr-code goes here"
-    @Published var isDisplayingSheet = true
+    @Published var isDisplayingSheet = false
     @Published var isDisplayingDetailComicView = false
     @Published var fetchedComics = [ComicViewModel]()
     private var comicsRepository: ComicsRepository
@@ -28,6 +28,8 @@ final class ScannerViewModel: ObservableObject {
         emptyFetchedComics()
         do {
             try await self.fetchedComics = comicsRepository.fetchDetailComicsById(from: id).data.results.compactMap(ComicViewModel.init)
+            isDisplayingSheet = false
+            isDisplayingDetailComicView = true
             print(fetchedComics)
         } catch let error {
             print(error)

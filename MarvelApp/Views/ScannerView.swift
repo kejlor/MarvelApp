@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ScannerView: View {
     @ObservedObject var viewModel = ScannerViewModel()
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         VStack {
@@ -17,6 +18,9 @@ struct ScannerView: View {
                     .found(r: self.viewModel.onFoundQrCode)
                     .torchLight(isOn: self.viewModel.torchIsOn)
                     .interval(delay: self.viewModel.scanInterval)
+//                    .task {
+//                        await viewModel.getDetailComics(for: viewModel.lastQrCode)
+//                    }
                     .padding()
                 
                 QRRectangle()
@@ -29,6 +33,17 @@ struct ScannerView: View {
                     .foregroundColor(.black)
                     .imageScale(.large)
             }
+            
+            Button {
+                viewModel.lastQrCode = "323"
+                Task {
+                    await viewModel.getDetailComics(for:viewModel.lastQrCode)
+//                    dismiss()
+                }
+            } label: {
+                Text("Do something")
+            }
+
         }
     }
 }

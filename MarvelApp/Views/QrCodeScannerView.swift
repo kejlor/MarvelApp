@@ -38,7 +38,7 @@ struct QrCodeScannerView: UIViewRepresentable {
         return self
     }
     
-    func found(r: @escaping (String) -> Void) -> QrCodeScannerView {
+    func found(r: @escaping (String) async -> Void) -> QrCodeScannerView {
         delegate.onResult = r
         return self
     }
