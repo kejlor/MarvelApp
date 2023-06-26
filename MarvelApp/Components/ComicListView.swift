@@ -10,10 +10,11 @@ import SwiftUI
 struct ComicListView: View {
     @EnvironmentObject var vm: ComicListViewModel
     @ObservedObject var scannerVM = ScannerViewModel()
+    @State private var navPath = NavigationPath()
     var comics: [ComicViewModel]
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navPath) {
             List(comics) { comic in
                 NavigationLink(value: comic) {
                     ComicListEntry(comicVM: comic)
@@ -23,13 +24,13 @@ struct ComicListView: View {
                 } }
             }
             .navigationTitle("HomeViewNavigationTitle".localized)
-            .navigationDestination(for: ComicViewModel.self) { comic in
-                DetailComicBookView(comicVM: comic)
-            }
+//            .navigationDestination(for: ComicViewModel.self) { comic in
+//                DetailComicBookView(comicVM: comic)
+//            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        scannerVM.isDisplayingSheet.toggle()
+                        scannerVM.isShowingSheet()
                     } label: {
                         Image(systemName: "qrcode.viewfinder")
                     }
@@ -37,6 +38,14 @@ struct ComicListView: View {
             }
             .sheet(isPresented: $scannerVM.isDisplayingSheet) {
                 ScannerView()
+                    .onDisappear {
+//                        navPath.append(scannerVM.returnFetchedComics())
+                        navPath.append(scannerVM.fetchedComics.first)
+//                        print(navPath)
+                    }
+            }
+            .navigationDestination(for: ComicViewModel.self) { comic in
+                DetailComicBookView(comicVM: comic)
             }
         }
     }
