@@ -18,9 +18,6 @@ struct ScannerView: View {
                     .found(r: self.viewModel.onFoundQrCode)
                     .torchLight(isOn: self.viewModel.torchIsOn)
                     .interval(delay: self.viewModel.scanInterval)
-//                    .task {
-//                        await viewModel.getDetailComics(for: viewModel.lastQrCode)
-//                    }
                     .padding()
                 
                 QRRectangle()
@@ -37,9 +34,13 @@ struct ScannerView: View {
             Button {
                 viewModel.lastQrCode = "323"
                 Task {
-                    await viewModel.getDetailComics(for:viewModel.lastQrCode)
-//                    dismiss()
+                    await viewModel.onFoundQrCode("323")
                 }
+                
+//                Task {
+//                    await viewModel.getDetailComics(for:viewModel.lastQrCode)
+////                    dismiss()
+//                }
             } label: {
                 Text("Do something")
             }
