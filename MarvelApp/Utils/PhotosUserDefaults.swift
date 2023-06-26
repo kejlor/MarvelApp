@@ -26,5 +26,20 @@ final class PhotosUserDefaults {
         
         return nil
     }
+    
+    func addComicsToFavourites(value: [ComicViewModel]) {
+        if let encoded = try? JSONEncoder().encode(value) {
+            UserDefaults.standard.set(encoded, forKey: "Favourites")
+        }
+    }
+    
+    func getFavourites() -> [ComicViewModel]? {
+        if let data = UserDefaults.standard.object(forKey: "Favourites") as? Data,
+           let favourites = try? JSONDecoder().decode([ComicViewModel].self, from: data) {
+            return favourites
+        }
+        
+        return nil
+    }
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct UrlResponse: Decodable {
+struct UrlResponse: Codable {
     let type: String
     let url: String
 }
