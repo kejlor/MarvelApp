@@ -14,15 +14,7 @@ struct SearchView: View {
     var body: some View {
         NavigationStack {
             if vm.filteredComics.isEmpty {
-                VStack {
-                    Image(systemName: "book.fill")
-                        .foregroundColor(.secondary)
-                        .font(.system(size: 70))
-                    
-                    Text("EmptySearchViewListText".localized)
-                        .bold()
-                        .padding(.vertical)
-                }
+                NoDataFoundView(icon: "book.fill", text: "EmptySearchViewListText".localized)
             } else {
                 ComicListView(comics: vm.filteredComics)
             }
