@@ -8,43 +8,44 @@
 import SwiftUI
 
 struct ScannerView: View {
-    @ObservedObject var viewModel = ScannerViewModel()
+    @ObservedObject var scannerVM = ScannerViewModel()
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        VStack {
-            ZStack(alignment: .center) {
-                QrCodeScannerView()
-                    .found(r: self.viewModel.onFoundQrCode)
-                    .torchLight(isOn: self.viewModel.torchIsOn)
-                    .interval(delay: self.viewModel.scanInterval)
-                    .padding()
-                
-                QRRectangle()
-            }
-            
-            Button {
-                self.viewModel.torchIsOn.toggle()
-            } label: {
-                Image(systemName: self.viewModel.torchIsOn ? "bolt.fill" : "bolt.slash.fill")
-                    .foregroundColor(.black)
-                    .imageScale(.large)
-            }
-            
-            Button {
-                viewModel.lastQrCode = "323"
-                Task {
-                    await viewModel.onFoundQrCode("323")
+        NavigationStack {
+            VStack {
+                ZStack(alignment: .center) {
+                    QrCodeScannerView()
+                        .found(r: self.scannerVM.onFoundQrCode)
+                        .torchLight(isOn: self.scannerVM.torchIsOn)
+                        .interval(delay: self.scannerVM.scanInterval)
+                        .padding()
+                    
+                    QRRectangle()
                 }
                 
-//                Task {
-//                    await viewModel.getDetailComics(for:viewModel.lastQrCode)
-////                    dismiss()
-//                }
-            } label: {
-                Text("Do something")
+                Button {
+                    self.scannerVM.torchIsOn.toggle()
+                } label: {
+                    Image(systemName: self.scannerVM.torchIsOn ? "bolt.fill" : "bolt.slash.fill")
+                        .foregroundColor(.black)
+                        .imageScale(.large)
+                }
+                
+                Button {
+                    scannerVM.lastQrCode = "323"
+                    Task {
+                        await scannerVM.onFoundQrCode("323")
+                    }
+                } label: {
+                    Text("Do something")
+                }
             }
-
+            .onReceive(scannerVM.$isDisplayingSheet) { isDisplayingSheet in
+                if isDisplayingSheet {
+                    dismiss()
+                }
+            }
         }
     }
 }
