@@ -15,8 +15,8 @@ final class ScannerViewModel: ObservableObject {
     
     @Published var torchIsOn: Bool = false
     @Published var lastQrCode: String = "Qr-code goes here"
-    @Published var isDisplayingSheet = false
     @Published var fetchedComics = [ComicViewModel]()
+    @Published var isDisplayingSheet = false
     private var comicsRepository: ComicsRepository
     
     init(comicsRepository: ComicsRepository = ComicsRepository(networkService: NetworkService())) {
@@ -27,7 +27,6 @@ final class ScannerViewModel: ObservableObject {
         emptyFetchedComics()
         do {
             try await self.fetchedComics = comicsRepository.fetchDetailComicsById(from: id).data.results.compactMap(ComicViewModel.init)
-            isDisplayingSheet = true
             print(fetchedComics)
         } catch let error {
             print(error)
@@ -38,10 +37,17 @@ final class ScannerViewModel: ObservableObject {
         self.fetchedComics = [ComicViewModel]()
     }
     
-    func onFoundQrCode(_ code: String) async -> ComicViewModel {
+    func onFoundQrCode(_ code: String) async {
         self.lastQrCode = code
-        isDisplayingSheet = false
+        self.isDisplayingSheet.toggle()
         await getDetailComics(for: code)
-        return fetchedComics[0]
+    }
+    
+    func returnFetchedComics() -> ComicViewModel? {
+        if let comic = fetchedComics.first {
+            return comic
+        }
+        
+        return nil
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ComicListView: View {
     @EnvironmentObject var vm: ComicListViewModel
-    @State private var isShowingCameraSheet = false
+    @ObservedObject var scannerVM = ScannerViewModel()
     var comics: [ComicViewModel]
     
     var body: some View {
@@ -29,13 +29,13 @@ struct ComicListView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        isShowingCameraSheet = true
+                        scannerVM.isDisplayingSheet.toggle()
                     } label: {
                         Image(systemName: "qrcode.viewfinder")
                     }
                 }
             }
-            .sheet(isPresented: $isShowingCameraSheet) {
+            .sheet(isPresented: $scannerVM.isDisplayingSheet) {
                 ScannerView()
             }
         }
