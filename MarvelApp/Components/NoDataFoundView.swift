@@ -26,7 +26,7 @@ struct NoDataFoundView: View {
 
 struct NoDataFoundView_Previews: PreviewProvider {
     static var previews: some View {
-        NoDataFoundView(icon: "star.fill", text: "Any message")
+        NoDataFoundView(icon: "star.fill", text: "NoDataFoundViewPreviewText".localized)
     }
 }
 

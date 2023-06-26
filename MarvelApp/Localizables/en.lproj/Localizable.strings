@@ -40,3 +40,6 @@
 
 // FavouritesComicsView
 "FavouritesComicsViewIsEmpty" = "Add first favourite comics";
+
+// NoDataFoundView
+"NoDataFoundViewPreviewText" = "Any message";
