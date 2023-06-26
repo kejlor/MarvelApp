@@ -19,9 +19,7 @@ struct ComicListView: View {
                     ComicListEntry(comicVM: comic)
                         .swipeActions {
                             Button {
-                                if favouritesVM.contains(comic) {
-                                    favouritesVM.remove(comic)
-                                } else {
+                                if !favouritesVM.contains(comic) {
                                     favouritesVM.add(comic)
                                 }
                             } label: {
