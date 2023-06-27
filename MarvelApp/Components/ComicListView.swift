@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ComicListView: View {
     @EnvironmentObject var vm: ComicListViewModel
-    @ObservedObject var scannerVM = ScannerViewModel()
+    @StateObject var scannerVM = ScannerViewModel()
     @State private var navPath = [ComicViewModel]()
     var comics: [ComicViewModel]
     
@@ -27,7 +27,7 @@ struct ComicListView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        scannerVM.isShowingSheet()
+                        scannerVM.isDisplayingSheet.toggle()
                     } label: {
                         Image(systemName: "qrcode.viewfinder")
                     }
@@ -35,9 +35,12 @@ struct ComicListView: View {
             }
             .sheet(isPresented: $scannerVM.isDisplayingSheet) {
                 ScannerView()
+                    .environmentObject(scannerVM)
                     .onDisappear {
+                        navPath.removeAll()
                         Task {
-                            if let fetchedComics = try? await scannerVM.getDetailComics(for: "323"), let firstValue = fetchedComics.first {  navPath.append(firstValue)
+                            if let fetchedComics = try? await scannerVM.getDetailComics(for: scannerVM.lastQrCode), let firstValue = fetchedComics.first {
+                                navPath.append(firstValue)
                             }
                         }
                     }
