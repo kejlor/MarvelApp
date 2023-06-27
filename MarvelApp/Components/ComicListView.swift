@@ -9,11 +9,14 @@ import SwiftUI
 
 struct ComicListView: View {
     @EnvironmentObject var vm: ComicListViewModel
+    @StateObject var scannerVM = ScannerViewModel()
+    @State private var navPath = [ComicViewModel]()
     @EnvironmentObject var favouritesVM: FavouritesComicsViewModel
     var comics: [ComicViewModel]
+    @State private var isShowingScanner = false
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navPath) {
             List(comics) { comic in
                 NavigationLink(value: comic) {
                     ComicListEntry(comicVM: comic)
@@ -33,6 +36,27 @@ struct ComicListView: View {
                 } }
             }
             .navigationTitle("HomeViewNavigationTitle".localized)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isShowingScanner.toggle()
+                    } label: {
+                        Image(systemName: "qrcode.viewfinder")
+                    }
+                }
+            }
+            .sheet(isPresented: $isShowingScanner) {
+                ScannerView()
+                    .environmentObject(scannerVM)
+                    .onDisappear {
+                        navPath.removeAll()
+                        Task {
+                            if let fetchedComics = try? await scannerVM.getDetailComics(for: scannerVM.lastQrCode), let comicsFromQR = fetchedComics.first {
+                                navPath.append(comicsFromQR)
+                            }
+                        }
+                    }
+            }
             .navigationDestination(for: ComicViewModel.self) { comic in
                 DetailComicBookView(comicVM: comic)
             }
