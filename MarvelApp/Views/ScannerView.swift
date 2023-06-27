@@ -6,45 +6,32 @@
 //
 
 import SwiftUI
+import CodeScanner
 
 struct ScannerView: View {
-    @ObservedObject var scannerVM = ScannerViewModel()
+    @EnvironmentObject var scannerVM: ScannerViewModel
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationStack {
             VStack {
                 ZStack(alignment: .center) {
-                    QrCodeScannerView()
-                        .found(r: self.scannerVM.onFoundQrCode)
-                        .torchLight(isOn: self.scannerVM.torchIsOn)
-                        .interval(delay: self.scannerVM.scanInterval)
-                        .padding()
-                    
+                    CodeScannerView(codeTypes: [.qr]) { response in
+                        switch response {
+                        case .success(let success):
+                            Task {
+                                scannerVM.lastQrCode = success.string
+                                dismiss()
+                            }
+                        case .failure(let failure):
+                            print(failure)
+                        }
+                    }
                     QRRectangle()
                 }
-                
-                Button {
-                    self.scannerVM.torchIsOn.toggle()
-                } label: {
-                    Image(systemName: self.scannerVM.torchIsOn ? "bolt.fill" : "bolt.slash.fill")
-                        .foregroundColor(.black)
-                        .imageScale(.large)
-                }
-                
-                Button {
-                    scannerVM.lastQrCode = "323"
-                    Task {
-                        await scannerVM.onFoundQrCode("323")
-                    }
-                } label: {
-                    Text("Do something")
-                }
             }
-            .onReceive(scannerVM.$isDisplayingSheet) { isDisplayingSheet in
-                if isDisplayingSheet {
-                    dismiss()
-                }
+            .onAppear {
+                scannerVM.lastQrCode = ""
             }
         }
     }
@@ -53,5 +40,6 @@ struct ScannerView: View {
 struct ScannerView_Previews: PreviewProvider {
     static var previews: some View {
         ScannerView()
+            .environmentObject(ScannerViewModel())
     }
 }
