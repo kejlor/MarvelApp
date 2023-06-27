@@ -37,3 +37,9 @@
 "ComicViewModelCreatorsEmpty" = "Twórcy nieznalezieni";
 "ComicViewModelDetail" = "szczegóły";
 "ComicViewModelMoreData" = "Nie znaleziono więcej danych";
+
+// FavouritesComicsView
+"FavouritesComicsViewIsEmpty" = "Dodaj pierwszy komiks do ulubionych";
+
+// NoDataFoundView
+"NoDataFoundViewPreviewText" = "Jakaś wiadomość";

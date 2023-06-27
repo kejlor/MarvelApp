@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @EnvironmentObject var vm: ComicListViewModel
+    @EnvironmentObject var favouritesVM: FavouritesComicsViewModel
     
     var body: some View {
         VStack {
@@ -16,6 +17,8 @@ struct HomeView: View {
                 ProgressView()
             } else {
                 ComicListView(comics: vm.comics)
+                    .environmentObject(vm)
+                    .environmentObject(favouritesVM)
             }
         }
         .alert(isPresented: $vm.isShowingAlertGetComics) {
@@ -34,5 +37,6 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
             .environmentObject(ComicListViewModel())
+            .environmentObject(FavouritesComicsViewModel())
     }
 }

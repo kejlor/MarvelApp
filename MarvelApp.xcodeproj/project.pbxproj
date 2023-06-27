@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5C1B49DD2A3B01A9007AAD00 /* ComicsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C1B49DC2A3B01A9007AAD00 /* ComicsRepository.swift */; };
-		5C1B49E02A3B211A007AAD00 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 5C1B49DF2A3B211A007AAD00 /* Kingfisher */; };
 		5C7DFEE22A3877D30022F564 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C7DFEE42A3877D30022F564 /* Localizable.strings */; };
 		5C7DFEE82A387C3F0022F564 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C7DFEE72A387C3F0022F564 /* String+Ext.swift */; };
+		5C958EC22A458FE200FAC558 /* FavouritesComicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C958EC12A458FE200FAC558 /* FavouritesComicsView.swift */; };
+		5C958EC62A497A4200FAC558 /* NoDataFoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C958EC52A497A4200FAC558 /* NoDataFoundView.swift */; };
 		5C958EC92A49C12B00FAC558 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 5C958EC82A49C12B00FAC558 /* CodeScanner */; };
 		5CC49CB52A40467C00C022CC /* PhotosUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC49CB42A40467C00C022CC /* PhotosUserDefaults.swift */; };
 		5CC49CC72A41A06900C022CC /* MockComicsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC49CC62A41A06900C022CC /* MockComicsRepository.swift */; };
@@ -37,6 +38,7 @@
 		5CD2E1822A445C53008DA25B /* QrCodeCameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD2E1812A445C53008DA25B /* QrCodeCameraDelegate.swift */; };
 		5CD2E18A2A4467DF008DA25B /* QRRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD2E1892A4467DF008DA25B /* QRRectangle.swift */; };
 		5CD2E18C2A4467ED008DA25B /* QRRectangleCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD2E18B2A4467ED008DA25B /* QRRectangleCorner.swift */; };
+		5CD2E18E2A457A8A008DA25B /* FavouritesComicsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD2E18D2A457A8A008DA25B /* FavouritesComicsViewModel.swift */; };
 		E96A09212A0E6957008902C3 /* MarvelAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A09202A0E6957008902C3 /* MarvelAppApp.swift */; };
 		E96A09232A0E6957008902C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96A09222A0E6957008902C3 /* ContentView.swift */; };
 		E96A09252A0E6958008902C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E96A09242A0E6958008902C3 /* Assets.xcassets */; };
@@ -77,6 +79,8 @@
 		5C7DFEE32A3877D30022F564 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5C7DFEE52A3877D60022F564 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5C7DFEE72A387C3F0022F564 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		5C958EC12A458FE200FAC558 /* FavouritesComicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesComicsView.swift; sourceTree = "<group>"; };
+		5C958EC52A497A4200FAC558 /* NoDataFoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataFoundView.swift; sourceTree = "<group>"; };
 		5CC49CB42A40467C00C022CC /* PhotosUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosUserDefaults.swift; sourceTree = "<group>"; };
 		5CC49CBC2A41A00D00C022CC /* MarvelAppUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelAppUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CC49CC62A41A06900C022CC /* MockComicsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockComicsRepository.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 		5CD2E1812A445C53008DA25B /* QrCodeCameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrCodeCameraDelegate.swift; sourceTree = "<group>"; };
 		5CD2E1892A4467DF008DA25B /* QRRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRRectangle.swift; sourceTree = "<group>"; };
 		5CD2E18B2A4467ED008DA25B /* QRRectangleCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRRectangleCorner.swift; sourceTree = "<group>"; };
+		5CD2E18D2A457A8A008DA25B /* FavouritesComicsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesComicsViewModel.swift; sourceTree = "<group>"; };
 		E96A091D2A0E6957008902C3 /* MarvelApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E96A09202A0E6957008902C3 /* MarvelAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAppApp.swift; sourceTree = "<group>"; };
 		E96A09222A0E6957008902C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,7 +133,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C958EC92A49C12B00FAC558 /* CodeScanner in Frameworks */,
-				5C1B49E02A3B211A007AAD00 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,6 +282,7 @@
 				E96A095B2A0E6CAE008902C3 /* ComicListView.swift */,
 				5CD2E1892A4467DF008DA25B /* QRRectangle.swift */,
 				5CD2E18B2A4467ED008DA25B /* QRRectangleCorner.swift */,
+				5C958EC52A497A4200FAC558 /* NoDataFoundView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -289,6 +294,7 @@
 				E96A094F2A0E6C09008902C3 /* ComicListViewModel.swift */,
 				E96A09512A0E6C22008902C3 /* SearchComicListViewModel.swift */,
 				5CD2E17D2A445B65008DA25B /* ScannerViewModel.swift */,
+				5CD2E18D2A457A8A008DA25B /* FavouritesComicsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -300,6 +306,7 @@
 				E96A095F2A0E6CE2008902C3 /* DetailComicBookView.swift */,
 				E96A09612A0E6D15008902C3 /* SearchView.swift */,
 				5CD2E17F2A445BDE008DA25B /* ScannerView.swift */,
+				5C958EC12A458FE200FAC558 /* FavouritesComicsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -351,7 +358,6 @@
 			);
 			name = MarvelApp;
 			packageProductDependencies = (
-				5C1B49DF2A3B211A007AAD00 /* Kingfisher */,
 				5C958EC82A49C12B00FAC558 /* CodeScanner */,
 			);
 			productName = MarvelApp;
@@ -388,7 +394,6 @@
 			);
 			mainGroup = E96A09142A0E6957008902C3;
 			packageReferences = (
-				5C1B49DE2A3B211A007AAD00 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				5C958EC72A49C12A00FAC558 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = E96A091E2A0E6957008902C3 /* Products */;
@@ -464,13 +469,16 @@
 				E96A093F2A0E6A86008902C3 /* UrlResponse.swift in Sources */,
 				5CD2E18A2A4467DF008DA25B /* QRRectangle.swift in Sources */,
 				E96A09522A0E6C22008902C3 /* SearchComicListViewModel.swift in Sources */,
+				5C958EC22A458FE200FAC558 /* FavouritesComicsView.swift in Sources */,
 				5CC49CB52A40467C00C022CC /* PhotosUserDefaults.swift in Sources */,
 				E96A09442A0E6B46008902C3 /* APIKeyable.swift in Sources */,
+				5CD2E18E2A457A8A008DA25B /* FavouritesComicsViewModel.swift in Sources */,
 				5CC49CD22A41AA3000C022CC /* MockNetworkService.swift in Sources */,
 				E96A09372A0E6A4F008902C3 /* Comic.swift in Sources */,
 				5CD2E18C2A4467ED008DA25B /* QRRectangleCorner.swift in Sources */,
 				E96A09622A0E6D15008902C3 /* SearchView.swift in Sources */,
 				5C7DFEE82A387C3F0022F564 /* String+Ext.swift in Sources */,
+				5C958EC62A497A4200FAC558 /* NoDataFoundView.swift in Sources */,
 				E96A09502A0E6C09008902C3 /* ComicListViewModel.swift in Sources */,
 				E96A095E2A0E6CC8008902C3 /* HomeView.swift in Sources */,
 				E96A093D2A0E6A79008902C3 /* Creator.swift in Sources */,
@@ -756,14 +764,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5C1B49DE2A3B211A007AAD00 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 7.0.0;
-			};
-		};
 		5C958EC72A49C12A00FAC558 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/twostraws/CodeScanner";
@@ -775,11 +775,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5C1B49DF2A3B211A007AAD00 /* Kingfisher */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5C1B49DE2A3B211A007AAD00 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
-		};
 		5C958EC82A49C12B00FAC558 /* CodeScanner */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5C958EC72A49C12A00FAC558 /* XCRemoteSwiftPackageReference "CodeScanner" */;

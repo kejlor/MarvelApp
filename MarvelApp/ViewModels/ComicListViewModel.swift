@@ -35,12 +35,25 @@ final class ComicListViewModel: ObservableObject {
     }
 }
 
-struct ComicViewModel: Identifiable{
-    
+class ComicViewModel: Identifiable, Codable {
     private var comic: Comic
     
     init(comic: Comic) {
         self.comic = comic
+    }
+    
+    enum CodingKeys: CodingKey {
+        case comic
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.comic = try container.decode(Comic.self, forKey: .comic)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(comic, forKey: .comic)
     }
     
     var id: Int {
