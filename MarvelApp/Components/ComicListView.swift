@@ -51,8 +51,8 @@ struct ComicListView: View {
                     .onDisappear {
                         navPath.removeAll()
                         Task {
-                            if let fetchedComics = try? await scannerVM.getDetailComics(for: scannerVM.lastQrCode), let firstValue = fetchedComics.first {
-                                navPath.append(firstValue)
+                            if let fetchedComics = try? await scannerVM.getDetailComics(for: scannerVM.lastQrCode), let comicsFromQR = fetchedComics.first {
+                                navPath.append(comicsFromQR)
                             }
                         }
                     }
