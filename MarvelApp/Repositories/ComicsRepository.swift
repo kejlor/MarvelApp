@@ -41,9 +41,8 @@ public class ComicsRepository {
     }
     
     func fetchDetailComicsById(from id: String) async throws -> ComicsResponse {
-        baseURL += "/\(id)"
-        let detailComicsURL = urlString + "&comicId=\(id)"
-        return try await networkService.fetchData(url: detailComicsURL)
+        let detailComicURL = "\(baseURL)/\(id)?ts=1&apikey=\(ENV.SERVICE_API_KEY)&hash=\(ENV.SERVICE_HASH)"
+        return try await networkService.fetchData(url: detailComicURL)
     }
 }
 
