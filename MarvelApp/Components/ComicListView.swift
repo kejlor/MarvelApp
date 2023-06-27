@@ -19,10 +19,11 @@ struct ComicListView: View {
         NavigationStack(path: $navPath) {
             List(comics) { comic in
                 NavigationLink(value: comic) {
+                    let isComicFavourite = favouritesVM.contains(comic)
                     ComicListEntry(comicVM: comic)
                         .swipeActions {
                             Button {
-                                if !favouritesVM.contains(comic) {
+                                if !isComicFavourite {
                                     favouritesVM.add(comic)
                                 }
                             } label: {

@@ -10,13 +10,17 @@ import SwiftUI
 struct SearchView: View {
     @EnvironmentObject var vm: SearchComicListViewModel
     @State private var text = ""
+    @EnvironmentObject var favouritesVM: FavouritesComicsViewModel
     
     var body: some View {
         NavigationStack {
             if vm.filteredComics.isEmpty {
                 NoDataFoundView(icon: "book.fill", text: "EmptySearchViewListText".localized)
             } else {
-                ComicListView(comics: vm.filteredComics)
+                foundComicsList
+                    .navigationDestination(for: ComicViewModel.self) { comic in
+                        DetailComicBookView(comicVM: comic)
+                    }
             }
         }
         .searchable(text: $text, prompt: "SearchablePrompt".localized)
@@ -32,5 +36,27 @@ struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView()
             .environmentObject(SearchComicListViewModel())
+            .environmentObject(FavouritesComicsViewModel())
+    }
+}
+
+extension SearchView {
+    var foundComicsList: some View {
+        List(vm.filteredComics) { comic in
+            let isComicFavourite = favouritesVM.contains(comic)
+            NavigationLink(value: comic) {
+                ComicListEntry(comicVM: comic)
+                    .swipeActions {
+                        Button {
+                            if !isComicFavourite {
+                                favouritesVM.add(comic)
+                            }
+                        } label: {
+                            Image(systemName: favouritesVM.contains(comic) ? "star.slash.fill" : "star")
+                        }
+                        .tint(favouritesVM.contains(comic) ? .red : .green)
+                    }
+            }
+        }
     }
 }
