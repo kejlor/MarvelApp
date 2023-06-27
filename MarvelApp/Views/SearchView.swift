@@ -43,11 +43,12 @@ struct SearchView_Previews: PreviewProvider {
 extension SearchView {
     var foundComicsList: some View {
         List(vm.filteredComics) { comic in
+            let isComicFavourite = favouritesVM.contains(comic)
             NavigationLink(value: comic) {
                 ComicListEntry(comicVM: comic)
                     .swipeActions {
                         Button {
-                            if !favouritesVM.contains(comic) {
+                            if !isComicFavourite {
                                 favouritesVM.add(comic)
                             }
                         } label: {
