@@ -31,7 +31,7 @@ public class ComicsRepository {
     }
     
     func fetchComicsByTitle(title: String) async throws -> ComicsResponse {
-        let comicsURL = urlString + "&title=\(title)"
+        let comicsURL = urlString + "&titleStartsWith=\(title)"
         return try await networkService.fetchData(url: comicsURL)
     }
     
