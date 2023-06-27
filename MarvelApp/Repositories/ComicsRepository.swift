@@ -21,13 +21,14 @@ public class ComicsRepository {
     }
     
     func fetchComics() async throws -> ComicsResponse {
+        self.offsetLimit = 0
         return try await networkService.fetchData(url: urlString)
         
     }
     
     func fetchMoreComics() async throws -> ComicsResponse {
         self.offsetLimit += 100
-        return try await self.fetchComics()
+        return try await networkService.fetchData(url: urlString)
     }
     
     func fetchComicsByTitle(title: String) async throws -> ComicsResponse {
