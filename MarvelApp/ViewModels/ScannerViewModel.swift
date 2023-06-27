@@ -11,7 +11,6 @@ import Foundation
 final class ScannerViewModel: ObservableObject {
     @Published var lastQrCode: String = ""
     @Published var fetchedComics = [ComicViewModel]()
-    @Published var isDisplayingSheet = false
     private var comicsRepository: ComicsRepository
     
     init(comicsRepository: ComicsRepository = ComicsRepository(networkService: NetworkService())) {

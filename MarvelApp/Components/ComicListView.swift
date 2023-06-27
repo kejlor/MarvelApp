@@ -13,6 +13,7 @@ struct ComicListView: View {
     @State private var navPath = [ComicViewModel]()
     @EnvironmentObject var favouritesVM: FavouritesComicsViewModel
     var comics: [ComicViewModel]
+    @State private var isShowingScanner = false
     
     var body: some View {
         NavigationStack(path: $navPath) {
@@ -38,13 +39,13 @@ struct ComicListView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        scannerVM.isDisplayingSheet.toggle()
+                        isShowingScanner.toggle()
                     } label: {
                         Image(systemName: "qrcode.viewfinder")
                     }
                 }
             }
-            .sheet(isPresented: $scannerVM.isDisplayingSheet) {
+            .sheet(isPresented: $isShowingScanner) {
                 ScannerView()
                     .environmentObject(scannerVM)
                     .onDisappear {
